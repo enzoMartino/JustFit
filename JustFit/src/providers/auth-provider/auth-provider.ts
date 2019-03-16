@@ -7,7 +7,7 @@ import { firebaseConfig } from '../../models/common/firebase-config';
 @Injectable()
 export class AuthProvider {
 
-  ui: firebaseui.auth.AuthUI;
+  public ui: firebaseui.auth.AuthUI;
 
   constructor() {
     // Initialize the FirebaseUI Widget using Firebase.
@@ -32,6 +32,9 @@ export class AuthProvider {
           // Return type determines whether we continue the redirect automatically
           // or whether we leave that to developer to handle.
           return false;
+        },
+        signInFailure: (error: firebaseui.auth.AuthUIError) => {
+          
         }
       },
       credentialHelper: firebaseui.auth.CredentialHelper.NONE,
