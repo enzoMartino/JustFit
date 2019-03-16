@@ -16,6 +16,7 @@
     "@angular/compiler": "5.2.11",
     "@angular/compiler-cli": "5.2.11",
     "@angular/core": "5.2.11",
+    "@angular/fire": "^5.1.2",
     "@angular/forms": "5.2.11",
     "@angular/http": "5.2.11",
     "@angular/platform-browser": "5.2.11",
@@ -24,6 +25,10 @@
     "@ionic-native/splash-screen": "~4.18.0",
     "@ionic-native/status-bar": "~4.18.0",
     "@ionic/storage": "2.2.0",
+    "angularfire2": "^5.1.2",
+    "firebase": "^5.9.0",
+    "firebaseui": "^3.5.2",
+    "firebaseui-angular": "^3.4.1",
     "ionic-angular": "3.9.3",
     "ionicons": "3.0.0",
     "rxjs": "5.5.11",
@@ -34,5 +39,8 @@
     "@ionic/app-scripts": "3.2.1",
     "typescript": "~2.6.2"
   },
-  "description": "An Ionic project"
+  "description": "An Ionic project",
+  "config": {
+    "ionic_copy": "./src/config/copy.config.js"
+  }
 }
