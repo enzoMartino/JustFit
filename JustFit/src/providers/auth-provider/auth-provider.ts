@@ -1,63 +1,50 @@
-import { Injectable } from '@angular/core';
-import firebase from 'firebase/app';
 import 'firebase/auth';
-import * as firebaseui from 'firebaseui';
-import { firebaseConfig } from '../../models/common/firebase-config';
+import { Injectable } from '@angular/core';
+import { AngularFireAuth } from 'angularfire2/auth';
+import * as firebase from 'firebase/app';
+import FirebaseAuthProvider = firebase.auth.AuthProvider;
 
 @Injectable()
 export class AuthProvider {
 
-  public ui: firebaseui.auth.AuthUI;
+  constructor(
+    public readonly afAuth: AngularFireAuth
+  ) { }
 
-  constructor() {
-    // Initialize the FirebaseUI Widget using Firebase.
-    firebase.initializeApp(firebaseConfig);
-    this.ui = new firebaseui.auth.AuthUI(firebase.auth());
+  signInWithEmail(credentials) {
+    console.log('Sign in with email');
+    return this.afAuth.auth.signInWithEmailAndPassword(credentials.email,
+      credentials.password);
   }
 
-  public static getUiConfig() {
-    // FirebaseUI config.
-    return {
-      callbacks: {
-        signInSuccessWithAuthResult: (authResult: firebase.auth.UserCredential) => {
-          const user = authResult.user;
-          const isNewUser = authResult.additionalUserInfo.isNewUser;
+  signUp(credentials) {
+    return this.afAuth.auth.createUserWithEmailAndPassword(credentials.email, credentials.password);
+  }
 
-          // initialize new user
-          if (isNewUser) {
-            // do initialization stuff here (ex. create profile)
-            return false;
-          }
+  signInWithGoogle(): any {
+    console.log('Sign in with google');
+    return this.oauthSignIn(new firebase.auth.GoogleAuthProvider());
+  }
 
-          // Return type determines whether we continue the redirect automatically
-          // or whether we leave that to developer to handle.
-          return false;
-        },
-        signInFailure: (error: firebaseui.auth.AuthUIError) => {
-          
-        }
-      },
-      credentialHelper: firebaseui.auth.CredentialHelper.NONE,
-      signInOptions: [
-        // Leave the lines as is for the providers you want to offer your users.
-        {
-          provider: firebase.auth.GoogleAuthProvider.PROVIDER_ID,
-          customParameters: {
-            // Forces account selection even when one account
-            // is available.
-            prompt: 'select_account'
-          }
-        }, {
-          provider: firebase.auth.FacebookAuthProvider.PROVIDER_ID,
-          scopes: [
-            'public_profile',
-            'email'
-          ]
-        },
-        firebase.auth.EmailAuthProvider.PROVIDER_ID,
-        firebase.auth.PhoneAuthProvider.PROVIDER_ID
-      ]
-    };
+  private oauthSignIn(provider: FirebaseAuthProvider): any {
+    if (!(<any>window).cordova) {
+      return this.afAuth.auth.signInWithPopup(provider);
+    } else {
+      return this.afAuth.auth.signInWithRedirect(provider)
+        .then(() => {
+          return this.afAuth.auth.getRedirectResult().then(result => {
+            // This gives you a Google Access Token.
+            // You can use it to access the Google API.
+            let token = JSON.stringify(result);
+            // The signed-in user info.
+            let user = result.user;
+            console.log(token, user);
+          }).catch(function (error) {
+            // Handle Errors here.
+            alert(error.message);
+          });
+        });
+    }
   }
 
 }

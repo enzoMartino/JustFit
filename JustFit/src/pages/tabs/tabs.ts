@@ -1,19 +1,18 @@
 import { Component } from '@angular/core';
+import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { EnumNavigationMain } from '../../models/enum.navigation.main';
 
-import { AboutPage } from '../about/about';
-import { ContactPage } from '../contact/contact';
-import { HomePage } from '../home/home';
-
+@IonicPage()
 @Component({
-  templateUrl: 'tabs.html'
+  selector: 'page-tabs',
+  templateUrl: 'tabs.html',
 })
 export class TabsPage {
 
-  tab1Root = HomePage;
-  tab2Root = AboutPage;
-  tab3Root = ContactPage;
+  tab1Root = EnumNavigationMain.HomePage;
+  tab2Root = EnumNavigationMain.ProfilePage;
+  tab3Root = EnumNavigationMain.SheetPage;
 
-  constructor() {
+  constructor(public navCtrl: NavController, public navParams: NavParams) { }
 
-  }
 }
