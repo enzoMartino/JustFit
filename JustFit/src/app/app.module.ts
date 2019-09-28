@@ -12,6 +12,7 @@ import { AngularFireAuth } from 'angularfire2/auth';
 
 @NgModule({
   declarations: [
+    MyApp
   ],
   imports: [
     BrowserModule,
