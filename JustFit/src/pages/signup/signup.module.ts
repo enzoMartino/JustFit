@@ -2,9 +2,9 @@ import { NgModule } from '@angular/core';
 import { IonicPageModule } from 'ionic-angular';
 import { SignupPage } from './signup';
 import { NgxErrorsModule } from '@ultimate/ngxerrors';
-import { AuthProvider } from '../../providers/auth-provider/auth-provider';
+import { AuthProvider } from '../../providers/auth-provider/auth.provider';
 import { AngularFireAuth } from 'angularfire2/auth';
-import { FormsValidatorProvider } from '../../providers/forms-validator/forms-validator';
+import { FormsValidatorProvider } from '../../providers/forms-validator/forms-validator.provider';
 
 @NgModule({
   declarations: [

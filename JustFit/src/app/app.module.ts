@@ -6,9 +6,10 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFirestoreModule } from 'angularfire2/firestore';
-import { AuthProvider } from '../providers/auth-provider/auth-provider';
+import { AuthProvider } from '../providers/auth-provider/auth.provider';
 import { firebaseConfig } from '../models/common/firebase-config';
 import { AngularFireAuth } from 'angularfire2/auth';
+import { SessionProvider } from '../providers/session/session.provider';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { AngularFireAuth } from 'angularfire2/auth';
     SplashScreen,
     { provide: ErrorHandler, useClass: IonicErrorHandler },
     AuthProvider,
-    AngularFireAuth
+    AngularFireAuth,
+    SessionProvider
   ]
 })
 export class AppModule { }

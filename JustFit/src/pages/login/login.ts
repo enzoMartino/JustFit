@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController } from 'ionic-angular';
-import { AuthProvider } from '../../providers/auth-provider/auth-provider'
+import { AuthProvider } from '../../providers/auth-provider/auth.provider'
 import { FormGroup } from '@angular/forms';
 import { SignupPage } from '../signup/signup';
-import { FormsValidatorProvider } from '../../providers/forms-validator/forms-validator';
+import { FormsValidatorProvider } from '../../providers/forms-validator/forms-validator.provider';
 import { EnumNavigationMain } from '../../models/enum.navigation.main';
 
 @IonicPage()

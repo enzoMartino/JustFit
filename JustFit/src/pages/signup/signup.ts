@@ -2,8 +2,8 @@
 import { Component } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { NavController } from 'ionic-angular';
-import { AuthProvider } from '../../providers/auth-provider/auth-provider';
-import { FormsValidatorProvider } from '../../providers/forms-validator/forms-validator';
+import { AuthProvider } from '../../providers/auth-provider/auth.provider';
+import { FormsValidatorProvider } from '../../providers/forms-validator/forms-validator.provider';
 import { EnumNavigationMain } from '../../models/enum.navigation.main';
 
 @Component({

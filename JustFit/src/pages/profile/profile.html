@@ -1,7 +1,11 @@
 <ion-header>
   <common-navbar [title]="pageTitle"></common-navbar>
+  <shrinking-header [scrollArea]="profileContent" headerHeight="shrinkingHeaderHeight">
+    <img alt="" src="https://avatars.io/instagram/pathmoretravelled" />
+    <h2>Josh</h2>
+  </shrinking-header>
 </ion-header>
 
-<ion-content padding>
-
+<ion-content padding #profileContent>
+  <reviews-list *ngFor="let review of reviewsList"></reviews-list>
 </ion-content>

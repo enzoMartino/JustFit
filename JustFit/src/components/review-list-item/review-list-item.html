@@ -1,0 +1,16 @@
+<ion-item>
+  <ion-row>
+    <ion-col>
+      <ion-avatar>
+        <img alt="" src="https://avatars.io/instagram/pathmoretravelled">
+      </ion-avatar>
+    </ion-col>
+    <ion-col>
+      <ion-row>{{reviewTitle}}</ion-row>
+      <ion-row>{{reviewDescription}}</ion-row>
+    </ion-col>
+    <ion-col>
+      <review-stars [rate]="reviewRate"></review-stars>
+    </ion-col>
+  </ion-row>
+</ion-item>
