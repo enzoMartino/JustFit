@@ -13,11 +13,15 @@ import { FormsValidatorProvider } from '../../providers/forms-validator/forms-va
   imports: [
     NgxErrorsModule,
     IonicPageModule.forChild(LoginPage),
+    
   ],
   providers: [
-    AuthProvider,
     AngularFireAuth,
+    AuthProvider,
     FormsValidatorProvider
+  ],
+  exports: [
+    LoginPage
   ]
 })
 export class LoginPageModule { }

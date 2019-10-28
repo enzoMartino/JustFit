@@ -1,16 +1,18 @@
 
 import { Component } from '@angular/core';
 import { FormGroup } from '@angular/forms';
-import { NavController } from 'ionic-angular';
+import { NavController, IonicPage } from 'ionic-angular';
 import { AuthProvider } from '../../providers/auth-provider/auth.provider';
 import { FormsValidatorProvider } from '../../providers/forms-validator/forms-validator.provider';
 import { EnumNavigationMain } from '../../models/enum.navigation.main';
 
+@IonicPage()
 @Component({
-  selector: 'as-page-signup',
-  templateUrl: './signup.html'
+  selector: 'page-signup',
+  templateUrl: 'signup.html'
 })
 export class SignupPage {
+  
   signupError: string;
   signUpForm: FormGroup;
 

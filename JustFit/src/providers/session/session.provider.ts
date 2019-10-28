@@ -1,6 +1,4 @@
-import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { PersonModel } from '../../models/person.model';
 import { SessionCycleVariablesModel } from '../../models/session.cycle.variables.model';
 import { PersonalTrainerModel } from '../../models/personal.trainer.model';
 import { ClientModel } from '../../models/client.model';
@@ -19,11 +17,11 @@ export class SessionProvider {
     this.sessionCycleVariables = new SessionCycleVariablesModel();
   }
 
-  get loggedUser(): PersonalTrainerModel | ClientModel {
-    return this.sessionCycleVariables.loggedUser;
+  get loggedClient(): ClientModel {
+    return this.sessionCycleVariables.loggedClient;
   }
-  set loggedUser(val: PersonalTrainerModel | ClientModel) {
-    this.sessionCycleVariables.loggedUser = val;
+  set loggedClient(val: ClientModel) {
+    this.sessionCycleVariables.loggedClient = val;
   }
 
 }

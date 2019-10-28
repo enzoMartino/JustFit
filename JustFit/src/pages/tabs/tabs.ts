@@ -13,6 +13,9 @@ export class TabsPage {
   tab2Root = EnumNavigationMain.ProfilePage;
   tab3Root = EnumNavigationMain.SheetPage;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) { }
+  constructor(
+    public navCtrl: NavController,
+    public navParams: NavParams
+  ) { }
 
 }

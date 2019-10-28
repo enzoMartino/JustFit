@@ -2,9 +2,9 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController } from 'ionic-angular';
 import { AuthProvider } from '../../providers/auth-provider/auth.provider'
 import { FormGroup } from '@angular/forms';
-import { SignupPage } from '../signup/signup';
 import { FormsValidatorProvider } from '../../providers/forms-validator/forms-validator.provider';
 import { EnumNavigationMain } from '../../models/enum.navigation.main';
+import { AlertProvider } from '../../providers/alert/alert.provider';
 
 @IonicPage()
 @Component({
@@ -19,7 +19,8 @@ export class LoginPage {
   constructor(
     private readonly navCtrl: NavController,
     private readonly AuthProvider: AuthProvider,
-    private readonly FormsValidatorProvider: FormsValidatorProvider
+    private readonly FormsValidatorProvider: FormsValidatorProvider,
+    private readonly alertProvider: AlertProvider
   ) {
     this.initializeLoginPage();
   }
@@ -47,14 +48,16 @@ export class LoginPage {
   }
 
   signup() {
-    this.navCtrl.push(SignupPage);
+    this.navCtrl.push(EnumNavigationMain.SignupPage);
   }
 
-  loginWithGoogle() {
-    this.AuthProvider.signInWithGoogle().then(
-      () => this.navCtrl.setRoot(EnumNavigationMain.TabsPage),
-      error => console.log(error.message)
-    );
+  async loginWithGoogle() {
+    try {
+      await this.AuthProvider.signInWithGoogle();
+      this.navCtrl.setRoot(EnumNavigationMain.TabsPage);
+    } catch (error) {
+      this.alertProvider.presentErrorAlert(error.message);
+    }
   }
 
 }

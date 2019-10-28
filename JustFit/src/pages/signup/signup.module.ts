@@ -18,6 +18,9 @@ import { FormsValidatorProvider } from '../../providers/forms-validator/forms-va
     AuthProvider,
     AngularFireAuth,
     FormsValidatorProvider
+  ],
+  exports: [
+    SignupPage
   ]
 })
 export class SignupPageModule { }
