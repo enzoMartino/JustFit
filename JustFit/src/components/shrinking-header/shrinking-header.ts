@@ -10,7 +10,7 @@ export class ShrinkingHeaderComponent {
   @Input('scrollArea') scrollArea: any;
   @Input('headerHeight') headerHeight: number;
 
-  newHeaderHeight: any;
+  newHeaderHeight: number;
 
   constructor(
     private readonly element: ElementRef,
@@ -19,14 +19,15 @@ export class ShrinkingHeaderComponent {
 
   ngAfterViewInit() {
     this.renderer.setElementStyle(this.element.nativeElement,
-      'height', this.headerHeight + 'px'); this.scrollArea.ionScroll.subscribe((ev) => {
-        this.resizeHeader(ev);
-      });
+      'height', this.headerHeight + 'px');
+    this.scrollArea.ionScroll.subscribe((ev) => {
+      this.resizeHeader(ev);
+    });
   }
 
   resizeHeader(ev) {
     ev.domWrite(() => {
-      this.newHeaderHeight = this.headerHeight - ev.scrollTop;
+      this.newHeaderHeight = (this.headerHeight - ev.scrollTop);
       if (this.newHeaderHeight < 0) {
         this.newHeaderHeight = 0;
       }

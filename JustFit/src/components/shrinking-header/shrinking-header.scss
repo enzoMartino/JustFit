@@ -1,3 +1,6 @@
 shrinking-header {
   display: block;
+  overflow: auto;
+  overflow-y: hidden;
+  overflow-x: hidden;
 }
