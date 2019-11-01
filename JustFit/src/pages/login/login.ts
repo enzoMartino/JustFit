@@ -41,8 +41,7 @@ export class LoginPage {
       password: data.password
     };
     this.AuthProvider.signInWithEmail(credentials)
-      .then(
-        () => this.navCtrl.setRoot(EnumNavigationMain.TabsPage),
+      .then(() => this.navCtrl.setRoot(EnumNavigationMain.TabsPage),
         error => this.loginError = error.message
       );
   }
