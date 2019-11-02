@@ -11,6 +11,7 @@ import { SessionProvider } from '../providers/session/session.provider';
   templateUrl: 'app.html'
 })
 export class MyApp {
+
   rootPage: string;
 
   constructor(

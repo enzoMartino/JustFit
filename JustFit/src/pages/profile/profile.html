@@ -1,50 +1,19 @@
 <ion-header>
   <common-navbar [title]="pageTitle"></common-navbar>
   <shrinking-header [scrollArea]="profileContent" [headerHeight]="shrinkingHeaderHeight">
-    <img alt="" src="https://avatars.io/instagram/pathmoretravelled" />
-    <h2>Josh</h2>
+    <ion-row class="shrinking_header_row">
+      <ion-col col-auto class="shrinking_header_col">
+        <ion-row>
+          <img class="user_img" alt="" src="https://avatars.io/instagram/pathmoretravelled" />
+        </ion-row>
+        <ion-row>
+          <h2>Josh</h2>
+        </ion-row>
+      </ion-col>
+    </ion-row>
   </shrinking-header>
 </ion-header>
 
 <ion-content padding #profileContent no-bounce>
-  <p>ciao</p>
-  <p>ciao</p>
-  <p>ciao</p>
-  <p>ciao</p>
-  <p>ciao</p>
-  <p>ciao</p>
-  <p>ciao</p>
-  <p>ciao</p>
-  <p>ciao</p>
-  <p>ciao</p>
-  <p>ciao</p>
-  <p>ciao</p>
-  <p>ciao</p>
-  <p>ciao</p>
-  <p>ciao</p>
-  <p>ciao</p>
-  <p>ciao</p>
-  <p>ciao</p>
-  <p>ciao</p>
-  <p>ciao</p>
-  <p>ciao</p>
-  <p>ciao</p>
-  <p>ciao</p>
-  <p>ciao</p>
-  <p>ciao</p>
-  <p>ciao</p>
-  <p>ciao</p>
-  <p>ciao</p>
-  <p>ciao</p>
-  <p>ciao</p>
-  <p>ciao</p>
-  <p>ciao</p>
-  <p>ciao</p>
-  <p>ciao</p>
-  <p>ciao</p>
-  <p>ciao</p>
-  <p>ciao</p>
-  <p>ciao</p>
-  <p>ciao</p>
   <reviews-list *ngFor="let review of reviewsList"></reviews-list>
 </ion-content>
