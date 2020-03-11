@@ -1,3 +1,4 @@
+import { PersonalTrainerFirebaseRepository } from './../repositories/personal.trainer/personal.trainer.firebase.repository';
 import { NgModule, ErrorHandler } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
@@ -11,7 +12,7 @@ import { AngularFireAuth } from 'angularfire2/auth';
 import { SessionProvider } from '../providers/session/session.provider';
 import { AuthProvider } from '../providers/auth-provider/auth.provider';
 import { AlertProvider } from '../providers/alert/alert.provider';
-import { ClientFirebaseRepository } from '../repositories/client/client.firebase.repository';
+import { BaseFirebaseRepository } from '../repositories/base.firebase.repository';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import { ClientFirebaseRepository } from '../repositories/client/client.firebase
     SessionProvider,
     AuthProvider,
     AlertProvider,
-    ClientFirebaseRepository
+    BaseFirebaseRepository,
+    PersonalTrainerFirebaseRepository
   ]
 })
 export class AppModule { }

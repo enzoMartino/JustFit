@@ -1,20 +1,20 @@
+import { PersonalTrainerModel } from './../../models/personal.trainer.model';
 import 'firebase/auth';
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from 'angularfire2/auth';
 import * as firebase from 'firebase/app';
 import FirebaseAuthProvider = firebase.auth.AuthProvider;
-import { ClientModel } from '../../models/client.model';
 import { EnumPersonTypes } from '../../models/enum.person.types';
-import { ClientFirebaseRepository } from '../../repositories/client/client.firebase.repository';
 import { SessionProvider } from '../session/session.provider';
+import { PersonalTrainerFirebaseRepository } from '../../repositories/personal.trainer/personal.trainer.firebase.repository';
 
 @Injectable()
 export class AuthProvider {
 
   constructor(
     public readonly afAuth: AngularFireAuth,
-    private readonly clientFirebaseRepository: ClientFirebaseRepository,
-    private readonly sessionProvider: SessionProvider
+    private readonly sessionProvider: SessionProvider,
+    private readonly personalTrainerFirebaseRepository: PersonalTrainerFirebaseRepository
   ) { }
 
   async signInWithEmail(credentials) {
@@ -52,9 +52,10 @@ export class AuthProvider {
 
   private async handleNewUser(result: firebase.auth.UserCredential) {
     if (result.additionalUserInfo.isNewUser) {
-      let client = new ClientModel(result.user.uid, result.user.email, EnumPersonTypes.CLIENT);
-      this.clientFirebaseRepository.addClient(client)
-        .then(() => this.sessionProvider.loggedClient = client)
+      let personalTrainer = new PersonalTrainerModel(result.user.uid, result.user.email,
+        EnumPersonTypes.PERSONAL_TRAINER);
+      this.personalTrainerFirebaseRepository.addPersonalTrainer(personalTrainer)
+        .then(() => this.sessionProvider.loggedPersonaltrainer = personalTrainer)
         .catch(error => { throw error; });
     }
   }

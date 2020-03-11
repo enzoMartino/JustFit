@@ -1,24 +1,69 @@
 import { IPersonalTrainerRepository } from "./personal.trainer.interface.repository";
-import { Injectable, OnInit } from "@angular/core";
+import { Injectable } from "@angular/core";
 import { PersonalTrainerModel } from "../../models/personal.trainer.model";
-import { EnumErrors } from "../../models/enum.errors";
 import { EnumDbCollectionNames } from "../../models/enum.db.colletionsNames";
-import { UserFirebaseRepository } from "../person.firebase.repository";
+import { AngularFirestore } from "angularfire2/firestore";
+import { BaseFirebaseRepository } from "../base.firebase.repository";
+import { EnumErrors } from "../../models/enum.errors";
 
 @Injectable()
-export class PersonalTrainerFirebaseRepository
-    extends UserFirebaseRepository
-    implements IPersonalTrainerRepository, OnInit {
+export class PersonalTrainerFirebaseRepository implements IPersonalTrainerRepository {
 
-    ngOnInit(): void {
-        this.collectionName = EnumDbCollectionNames.PERSONAL_TRAINERS;
+  private _collectionName: EnumDbCollectionNames;
+  get collectionName(): EnumDbCollectionNames {
+    return this._collectionName;
+  }
+  set collectionName(val: EnumDbCollectionNames) {
+    this._collectionName = val;
+    if (this._collectionName !== undefined) {
+      this.collectionReference = this.firestore.collection(this.collectionName).ref;
     }
+  }
 
-    async addPersonalTrainer(personalTrainer: PersonalTrainerModel): Promise<void> {
-        await this.addUser<PersonalTrainerModel>(personalTrainer);
-    }
+  private _collectionReference: firebase.firestore.CollectionReference;
+  get collectionReference(): firebase.firestore.CollectionReference {
+    return this._collectionReference;
+  }
+  set collectionReference(val: firebase.firestore.CollectionReference) {
+    this._collectionReference = val;
+  }
 
-    async retrievePersonalTrainerById(id: string): Promise<PersonalTrainerModel> {
-        return await this.retrieveUserById<PersonalTrainerModel>(id);
+  constructor(
+    private readonly firestore: AngularFirestore,
+    private readonly baseFirebaseRepository: BaseFirebaseRepository
+  ) {
+    this.collectionName = EnumDbCollectionNames.PERSONAL_TRAINERS;
+  }
+
+  async addPersonalTrainer(personalTrainer: PersonalTrainerModel): Promise<void> {
+    return this.baseFirebaseRepository.addDocument<PersonalTrainerModel>(personalTrainer,
+      this.collectionReference);
+  }
+
+  async retrievePersonalTrainerById(id: string): Promise<PersonalTrainerModel> {
+    return await this.retrieveUserById<PersonalTrainerModel>(id);
+  }
+
+  private async retrieveUserById<T>(id: string): Promise<T> {
+    try {
+      const result = await this.collectionReference.where("id", "==", id).get();
+      this.handleRetrieveUserByIdErrors(result);
+      return this.handleRetrieveUserByIdResult(result);
+    } catch (error) {
+      throw error;
     }
+  }
+
+  private handleRetrieveUserByIdErrors(result: firebase.firestore.QuerySnapshot) {
+    if (result.docs.length === 0) {
+      throw EnumErrors.NO_USER_ERROR;
+    } else if (result.docs.length > 1) {
+      throw EnumErrors.MULTIPLE_USERS_ERROR;
+    }
+  }
+
+  private handleRetrieveUserByIdResult<T>(result: firebase.firestore.QuerySnapshot): T {
+    const user = result.docs[0].data() as T;
+    return user;
+  }
 }

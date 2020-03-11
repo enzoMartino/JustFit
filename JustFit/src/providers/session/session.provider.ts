@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { SessionCycleVariablesModel } from '../../models/session.cycle.variables.model';
 import { PersonalTrainerModel } from '../../models/personal.trainer.model';
-import { ClientModel } from '../../models/client.model';
 
 @Injectable()
 export class SessionProvider {
@@ -17,11 +16,11 @@ export class SessionProvider {
     this.sessionCycleVariables = new SessionCycleVariablesModel();
   }
 
-  get loggedClient(): ClientModel {
-    return this.sessionCycleVariables.loggedClient;
+  get loggedPersonaltrainer(): PersonalTrainerModel {
+    return this.sessionCycleVariables.loggedPersosnalTrainer;
   }
-  set loggedClient(val: ClientModel) {
-    this.sessionCycleVariables.loggedClient = val;
+  set loggedPersonaltrainer(val: PersonalTrainerModel) {
+    this.sessionCycleVariables.loggedPersosnalTrainer = val;
   }
 
 }

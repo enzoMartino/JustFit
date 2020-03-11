@@ -1,10 +1,10 @@
+import { PersonalTrainerFirebaseRepository } from './../repositories/personal.trainer/personal.trainer.firebase.repository';
 import { Component } from '@angular/core';
 import { Platform } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { AuthProvider } from '../providers/auth-provider/auth.provider';
 import { EnumNavigationMain } from '../models/enum.navigation.main';
-import { ClientFirebaseRepository } from '../repositories/client/client.firebase.repository';
 import { SessionProvider } from '../providers/session/session.provider';
 
 @Component({
@@ -19,8 +19,8 @@ export class MyApp {
     private readonly statusBar: StatusBar,
     private readonly splashScreen: SplashScreen,
     private readonly AuthProvider: AuthProvider,
-    private readonly clientFirebaseRepository: ClientFirebaseRepository,
-    private readonly sessionProvider: SessionProvider
+    private readonly sessionProvider: SessionProvider,
+    private readonly personalTrainerFirebaseRepository: PersonalTrainerFirebaseRepository
   ) {
     this.initializeApp();
   }
@@ -45,7 +45,8 @@ export class MyApp {
   }
 
   private async handleExistingUser(userId) {
-    const client = await this.clientFirebaseRepository.retrieveClientById(userId);
-    this.sessionProvider.loggedClient = client;
+    const personalTrainer = await this.personalTrainerFirebaseRepository
+      .retrievePersonalTrainerById(userId);
+    this.sessionProvider.loggedPersonaltrainer = personalTrainer;
   }
 }
