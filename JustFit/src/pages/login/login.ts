@@ -18,15 +18,15 @@ export class LoginPage {
 
   constructor(
     private readonly navCtrl: NavController,
-    private readonly AuthProvider: AuthProvider,
-    private readonly FormsValidatorProvider: FormsValidatorProvider,
+    private readonly authProvider: AuthProvider,
+    private readonly formsValidatorProvider: FormsValidatorProvider,
     private readonly alertProvider: AlertProvider
   ) {
     this.initializeLoginPage();
   }
 
   initializeLoginPage() {
-    this.loginForm = this.FormsValidatorProvider.retrieveEmailAndPasswordFormValidator();
+    this.loginForm = this.formsValidatorProvider.retrieveEmailAndPasswordFormValidator();
   }
 
   login() {
@@ -40,7 +40,7 @@ export class LoginPage {
       email: data.email,
       password: data.password
     };
-    this.AuthProvider.signInWithEmail(credentials)
+    this.authProvider.signInWithEmail(credentials)
       .then(() => this.navCtrl.setRoot(EnumNavigationMain.TabsPage),
         error => this.loginError = error.message
       );
@@ -52,7 +52,7 @@ export class LoginPage {
 
   async loginWithGoogle() {
     try {
-      await this.AuthProvider.signInWithGoogle();
+      await this.authProvider.signInWithGoogle();
       this.navCtrl.setRoot(EnumNavigationMain.TabsPage);
     } catch (error) {
       this.alertProvider.presentErrorAlert(error.message);

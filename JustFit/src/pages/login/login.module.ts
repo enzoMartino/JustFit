@@ -4,7 +4,6 @@ import { LoginPage } from './login';
 import { NgxErrorsModule } from '@ultimate/ngxerrors';
 import { AuthProvider } from '../../providers/auth-provider/auth.provider';
 import { AngularFireAuth } from 'angularfire2/auth';
-import { FormsValidatorProvider } from '../../providers/forms-validator/forms-validator.provider';
 
 @NgModule({
   declarations: [
@@ -17,8 +16,7 @@ import { FormsValidatorProvider } from '../../providers/forms-validator/forms-va
   ],
   providers: [
     AngularFireAuth,
-    AuthProvider,
-    FormsValidatorProvider
+    AuthProvider
   ],
   exports: [
     LoginPage

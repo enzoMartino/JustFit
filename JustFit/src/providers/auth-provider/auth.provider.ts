@@ -60,4 +60,8 @@ export class AuthProvider {
     }
   }
 
+  async logout() {
+    await this.afAuth.auth.signOut();
+  }
+
 }

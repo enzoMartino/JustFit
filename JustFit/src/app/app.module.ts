@@ -8,10 +8,8 @@ import { AngularFireModule } from 'angularfire2';
 import { AngularFirestoreModule, AngularFirestore, FirestoreSettingsToken } from 'angularfire2/firestore';
 import { firebaseConfig } from '../models//firebase-config';
 import { AngularFireAuth } from 'angularfire2/auth';
-import { SessionProvider } from '../providers/session/session.provider';
-import { AuthProvider } from '../providers/auth-provider/auth.provider';
-import { AlertProvider } from '../providers/alert/alert.provider';
 import { RepositoriesModule } from '../repositories/repositories.module';
+import { ProvidersModule } from '../providers/providers.module';
 
 @NgModule({
   declarations: [
@@ -22,6 +20,7 @@ import { RepositoriesModule } from '../repositories/repositories.module';
     IonicModule.forRoot(MyApp),
     AngularFireModule.initializeApp(firebaseConfig),
     AngularFirestoreModule,
+    ProvidersModule,
     RepositoriesModule
   ],
   bootstrap: [IonicApp],
@@ -34,10 +33,7 @@ import { RepositoriesModule } from '../repositories/repositories.module';
     AngularFirestore,
     { provide: ErrorHandler, useClass: IonicErrorHandler },
     { provide: FirestoreSettingsToken, useValue: {} },
-    AngularFireAuth,
-    SessionProvider,
-    AuthProvider,
-    AlertProvider
+    AngularFireAuth
   ]
 })
 export class AppModule { }

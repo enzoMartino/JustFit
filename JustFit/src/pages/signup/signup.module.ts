@@ -4,7 +4,6 @@ import { SignupPage } from './signup';
 import { NgxErrorsModule } from '@ultimate/ngxerrors';
 import { AuthProvider } from '../../providers/auth-provider/auth.provider';
 import { AngularFireAuth } from 'angularfire2/auth';
-import { FormsValidatorProvider } from '../../providers/forms-validator/forms-validator.provider';
 
 @NgModule({
   declarations: [
@@ -16,8 +15,7 @@ import { FormsValidatorProvider } from '../../providers/forms-validator/forms-va
   ],
   providers: [
     AuthProvider,
-    AngularFireAuth,
-    FormsValidatorProvider
+    AngularFireAuth
   ],
   exports: [
     SignupPage

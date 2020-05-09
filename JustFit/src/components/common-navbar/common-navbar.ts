@@ -1,4 +1,6 @@
 import { Component, Input } from '@angular/core';
+import { AuthProvider } from '../../providers/auth-provider/auth.provider';
+import { LoaderProvider } from '../../providers/loader/loader.provider';
 
 @Component({
   selector: 'common-navbar',
@@ -6,11 +8,16 @@ import { Component, Input } from '@angular/core';
 })
 export class CommonNavbarComponent {
 
-  @Input() title:string;
+  @Input() title: string;
 
-  constructor() {}
+  constructor(
+    private readonly authProvider: AuthProvider,
+    private readonly loaderProvider: LoaderProvider
+  ) { }
 
-  OnLogoutClicked(event){
-
+  async onLogoutClicked() {
+    await this.loaderProvider.showLoader();
+    await this.authProvider.logout();
+    await this.loaderProvider.hideLoader();
   }
 }
