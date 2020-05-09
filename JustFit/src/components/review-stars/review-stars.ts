@@ -1,11 +1,11 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, OnChanges, SimpleChanges } from '@angular/core';
 
 @Component({
   selector: 'review-stars',
   templateUrl: 'review-stars.html'
 })
 
-export class ReviewStarsComponent implements OnInit {
+export class ReviewStarsComponent implements OnChanges {
 
   private readonly totalStars: number = 5;
 
@@ -17,8 +17,11 @@ export class ReviewStarsComponent implements OnInit {
 
   constructor() { }
 
-  ngOnInit(): void {
-    this.drawStars();
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes && changes.rate && changes.rate.currentValue !== undefined &&
+      changes.rate.currentValue !== changes.rate.previousValue) {
+      this.drawStars();
+    }
   }
 
   drawStars(): void {
@@ -29,7 +32,7 @@ export class ReviewStarsComponent implements OnInit {
 
   private drawHalfStars(rate: number): number {
     let numberToReturn: number = 0;
-    numberToReturn = Number.parseFloat((rate % 1).toFixed(1)) !== 0.0 ? 1 : 0;
+    numberToReturn = Number.parseFloat((rate % 1).toFixed(1)) >= 0.5 ? 1 : 0;
     return numberToReturn;
   }
 
