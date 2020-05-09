@@ -1,11 +1,15 @@
 page-profile {
   .user_img {
-    border-radius: 50px;
+    margin: auto;
+    font-size: 50px;
   }
   .shrinking_header_col {
     margin: auto;
   }
   .shrinking_header_row {
     height: 100%;
+  }
+  .user_name{
+    margin: auto;
   }
 }

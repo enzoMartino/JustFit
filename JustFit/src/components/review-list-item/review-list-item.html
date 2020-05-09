@@ -1,16 +1,16 @@
-<ion-item>
-  <ion-row>
-    <ion-col>
-      <ion-avatar>
-        <img alt="" src="https://avatars.io/instagram/pathmoretravelled">
-      </ion-avatar>
-    </ion-col>
-    <ion-col>
-      <ion-row>{{reviewTitle}}</ion-row>
-      <ion-row>{{reviewDescription}}</ion-row>
-    </ion-col>
-    <ion-col>
-      <review-stars [rate]="reviewRate"></review-stars>
-    </ion-col>
-  </ion-row>
-</ion-item>
+<ion-row>
+  <ion-col col-2>
+    <ion-row class="reviewer_photo_row">
+      <ion-icon class="reviewer_photo" name="person"></ion-icon>
+    </ion-row>
+  </ion-col>
+  <ion-col col-7>
+    <ion-row>{{review.title}}</ion-row>
+    <ion-row>{{review.description}}</ion-row>
+  </ion-col>
+  <ion-col col-3>
+    <ion-row class="max_height">
+      <review-stars class="stars" [rate]="review.rate"></review-stars>
+    </ion-row>
+  </ion-col>
+</ion-row>

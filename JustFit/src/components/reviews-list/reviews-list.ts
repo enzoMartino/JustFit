@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { ReviewModel } from '../../models/review.model';
 
 @Component({
   selector: 'reviews-list',
@@ -7,6 +8,8 @@ import { Component } from '@angular/core';
 
 export class ReviewsListComponent {
 
-  constructor() {}
+  @Input() reviewsList: ReviewModel[];
+
+  constructor() { }
 
 }

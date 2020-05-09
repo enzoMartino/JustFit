@@ -1,4 +1,3 @@
-import { PersonalTrainerFirebaseRepository } from './../repositories/personal.trainer/personal.trainer.firebase.repository';
 import { NgModule, ErrorHandler } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
@@ -7,12 +6,12 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFirestoreModule, AngularFirestore, FirestoreSettingsToken } from 'angularfire2/firestore';
-import { firebaseConfig } from '../models/common/firebase-config';
+import { firebaseConfig } from '../models//firebase-config';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { SessionProvider } from '../providers/session/session.provider';
 import { AuthProvider } from '../providers/auth-provider/auth.provider';
 import { AlertProvider } from '../providers/alert/alert.provider';
-import { BaseFirebaseRepository } from '../repositories/base.firebase.repository';
+import { RepositoriesModule } from '../repositories/repositories.module';
 
 @NgModule({
   declarations: [
@@ -22,7 +21,8 @@ import { BaseFirebaseRepository } from '../repositories/base.firebase.repository
     BrowserModule,
     IonicModule.forRoot(MyApp),
     AngularFireModule.initializeApp(firebaseConfig),
-    AngularFirestoreModule
+    AngularFirestoreModule,
+    RepositoriesModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -37,9 +37,7 @@ import { BaseFirebaseRepository } from '../repositories/base.firebase.repository
     AngularFireAuth,
     SessionProvider,
     AuthProvider,
-    AlertProvider,
-    BaseFirebaseRepository,
-    PersonalTrainerFirebaseRepository
+    AlertProvider
   ]
 })
 export class AppModule { }

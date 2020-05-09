@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { ReviewModel } from '../../models/review.model';
+import { ReviewFirebaseRepository } from '../../repositories/review/review.firebase.repository';
+import { SessionProvider } from '../../providers/session/session.provider';
 
 @IonicPage()
 @Component({
@@ -13,7 +15,16 @@ export class ProfilePage {
   readonly shrinkingHeaderHeight = 150;
   reviewsList: ReviewModel[] = [];
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(
+    public navCtrl: NavController,
+    public navParams: NavParams,
+    private readonly sessionProvider: SessionProvider,
+    private readonly reviewFirebaseRepository: ReviewFirebaseRepository
+  ) { }
+
+  async ionViewDidEnter() {
+    this.reviewsList = await this.reviewFirebaseRepository
+      .getReviewsByUserId(this.sessionProvider.loggedPersonaltrainer.id);
   }
 
 }

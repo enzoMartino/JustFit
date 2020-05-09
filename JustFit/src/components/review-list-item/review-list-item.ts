@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { ReviewModel } from '../../models/review.model';
 
 @Component({
   selector: 'review-list-item',
@@ -7,9 +8,7 @@ import { Component } from '@angular/core';
 
 export class ReviewListItemComponent {
 
-  reviewTitle: string;
-  reviewDescription: string;
-  reviewRate: number;
+  @Input() review: ReviewModel;
 
   constructor() { }
 
