@@ -1,7 +1,7 @@
 {
   "name": "JustFit",
   "version": "0.0.1",
-  "author": "Ionic Framework",
+  "author": "Enzo Martino",
   "homepage": "http://ionicframework.com/",
   "private": true,
   "scripts": {
@@ -38,7 +38,11 @@
   },
   "devDependencies": {
     "@ionic/app-scripts": "3.2.1",
-    "typescript": "~2.6.2"
+    "typescript": "~2.6.2",
+    "minimist": ">=1.2.3",
+    "set-value": ">=2.0.1",
+    "mem": ">=4.0.0",
+    "braces": ">=2.3.1"
   },
   "description": "An Ionic project",
   "config": {
