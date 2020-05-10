@@ -9,6 +9,7 @@ export class PersonModel extends BaseFirebaseCollectionModel {
     phone: number;
     address: string;
     type: EnumPersonTypes;
+    picture: string;
 
     constructor(id: string, email: string, type: EnumPersonTypes) {
         super(id);

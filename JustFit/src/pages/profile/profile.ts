@@ -4,6 +4,7 @@ import { ReviewModel } from '../../models/review.model';
 import { ReviewFirebaseRepository } from '../../repositories/review/review.firebase.repository';
 import { SessionProvider } from '../../providers/session/session.provider';
 import { LoaderProvider } from '../../providers/loader/loader.provider';
+import { PersonalTrainerModel } from '../../models/personal.trainer.model';
 
 @IonicPage()
 @Component({
@@ -13,7 +14,8 @@ import { LoaderProvider } from '../../providers/loader/loader.provider';
 export class ProfilePage {
 
   readonly pageTitle = "Profile";
-  readonly shrinkingHeaderHeight = 150;
+  readonly shrinkingHeaderHeight = 250;
+  personalTrainer: PersonalTrainerModel;
   reviewsList: ReviewModel[] = [];
 
   constructor(
@@ -22,7 +24,9 @@ export class ProfilePage {
     private readonly sessionProvider: SessionProvider,
     private readonly reviewFirebaseRepository: ReviewFirebaseRepository,
     private readonly loaderProvider: LoaderProvider
-  ) { }
+  ) {
+    this.personalTrainer = this.sessionProvider.loggedPersonaltrainer;
+  }
 
   async ionViewDidEnter() {
     await this.loaderProvider.showLoader();

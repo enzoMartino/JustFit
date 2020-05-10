@@ -11,7 +11,7 @@ export class TabsPage {
 
   tab1Root = EnumNavigationMain.HomePage;
   tab2Root = EnumNavigationMain.ProfilePage;
-  tab3Root = EnumNavigationMain.SheetPage;
+  tab3Root = EnumNavigationMain.ClientsPage;
 
   constructor(
     public navCtrl: NavController,

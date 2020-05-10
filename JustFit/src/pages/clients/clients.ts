@@ -3,12 +3,12 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
 @IonicPage()
 @Component({
-  selector: 'page-sheet',
-  templateUrl: 'sheet.html',
+  selector: 'page-clients',
+  templateUrl: 'clients.html',
 })
-export class SheetPage {
+export class ClientsPage {
 
-  pageTitle = "Sheet";
+  pageTitle = "Clients";
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }

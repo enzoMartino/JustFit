@@ -7,6 +7,7 @@ import FirebaseAuthProvider = firebase.auth.AuthProvider;
 import { EnumPersonTypes } from '../../models/enum.person.types';
 import { SessionProvider } from '../session/session.provider';
 import { PersonalTrainerFirebaseRepository } from '../../repositories/personal.trainer/personal.trainer.firebase.repository';
+import { GoogleProfileModel } from '../../models/google-profile.model';
 
 @Injectable()
 export class AuthProvider {
@@ -38,13 +39,13 @@ export class AuthProvider {
   private async oauthSignIn(provider: FirebaseAuthProvider) {
     if (!(<any>window).cordova) {
       return this.afAuth.auth.signInWithPopup(provider)
-        .then(result => this.handleNewUser(result))
+        .then(result => this.handleNewGoogleUser(result))
         .catch(error => { throw error; });
     } else {
       return this.afAuth.auth.signInWithRedirect(provider)
         .then(() => {
           return this.afAuth.auth.getRedirectResult()
-            .then(result => this.handleNewUser(result))
+            .then(result => this.handleNewGoogleUser(result))
             .catch(error => { throw error; });
         });
     }
@@ -54,6 +55,20 @@ export class AuthProvider {
     if (result.additionalUserInfo.isNewUser) {
       let personalTrainer = new PersonalTrainerModel(result.user.uid, result.user.email,
         EnumPersonTypes.PERSONAL_TRAINER);
+      this.personalTrainerFirebaseRepository.addPersonalTrainer(personalTrainer)
+        .then(() => this.sessionProvider.loggedPersonaltrainer = personalTrainer)
+        .catch(error => { throw error; });
+    }
+  }
+
+  private async handleNewGoogleUser(result: firebase.auth.UserCredential) {
+    if (result.additionalUserInfo.isNewUser) {
+      let personalTrainer = new PersonalTrainerModel(result.user.uid, result.user.email,
+        EnumPersonTypes.PERSONAL_TRAINER);
+      const googleUser: GoogleProfileModel = result.additionalUserInfo.profile as GoogleProfileModel;
+      personalTrainer.name = googleUser.given_name;
+      personalTrainer.surname = googleUser.family_name;
+      personalTrainer.picture = googleUser.picture;
       this.personalTrainerFirebaseRepository.addPersonalTrainer(personalTrainer)
         .then(() => this.sessionProvider.loggedPersonaltrainer = personalTrainer)
         .catch(error => { throw error; });

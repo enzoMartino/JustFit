@@ -2,12 +2,15 @@
   <common-navbar [title]="pageTitle"></common-navbar>
   <shrinking-header [scrollArea]="profileContent" [headerHeight]="shrinkingHeaderHeight">
     <ion-row class="shrinking_header_row">
-      <ion-col col-auto class="shrinking_header_col">
-        <ion-row>
-          <ion-icon class="user_img" name="person"></ion-icon>
+      <ion-col col-auto class="shrinking_header_col margin_auto">
+        <ion-row class="user_img_row">
+          <img class="user_img margin_auto" *ngIf="personalTrainer?.picture" 
+            src="{{personalTrainer?.picture}}" alt="">
+          <ion-icon *ngIf="!(personalTrainer?.picture)" class="default_user_img margin_auto" 
+            name="person"></ion-icon>
         </ion-row>
         <ion-row>
-          <h2 class="user_name">Josh</h2>
+          <h2 class="user_name margin_auto">{{personalTrainer?.name}}</h2>
         </ion-row>
       </ion-col>
     </ion-row>

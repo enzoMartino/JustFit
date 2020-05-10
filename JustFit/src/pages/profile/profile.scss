@@ -1,15 +1,22 @@
 page-profile {
-  .user_img {
-    margin: auto;
+  .default_user_img {
     font-size: 50px;
   }
+  .user_img {
+    height: 120px;
+    border-radius: 50%;
+  }
   .shrinking_header_col {
-    margin: auto;
   }
   .shrinking_header_row {
     height: 100%;
   }
-  .user_name{
+  .user_name {
+  }
+  .margin_auto {
     margin: auto;
+  }
+  .user_img_row {
+    margin-bottom: 10px;
   }
 }

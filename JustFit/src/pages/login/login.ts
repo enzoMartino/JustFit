@@ -5,6 +5,7 @@ import { FormGroup } from '@angular/forms';
 import { FormsValidatorProvider } from '../../providers/forms-validator/forms-validator.provider';
 import { EnumNavigationMain } from '../../models/enum.navigation.main';
 import { AlertProvider } from '../../providers/alert/alert.provider';
+import { LoaderProvider } from '../../providers/loader/loader.provider';
 
 @IonicPage()
 @Component({
@@ -20,7 +21,8 @@ export class LoginPage {
     private readonly navCtrl: NavController,
     private readonly authProvider: AuthProvider,
     private readonly formsValidatorProvider: FormsValidatorProvider,
-    private readonly alertProvider: AlertProvider
+    private readonly alertProvider: AlertProvider,
+    private readonly loaderProvider: LoaderProvider
   ) {
     this.initializeLoginPage();
   }
@@ -52,10 +54,13 @@ export class LoginPage {
 
   async loginWithGoogle() {
     try {
+      this.loaderProvider.showLoader();
       await this.authProvider.signInWithGoogle();
       this.navCtrl.setRoot(EnumNavigationMain.TabsPage);
     } catch (error) {
       this.alertProvider.presentErrorAlert(error.message);
+    } finally {
+      this.loaderProvider.hideLoader();
     }
   }
 
