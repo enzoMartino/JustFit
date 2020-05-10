@@ -1,7 +1,8 @@
 <ion-row>
   <ion-col col-2>
     <ion-row class="reviewer_photo_row">
-      <ion-icon class="reviewer_photo" name="person"></ion-icon>
+      <img *ngIf="client?.picture" src="{{client?.picture}}" alt="">
+      <ion-icon class="reviewer_photo" *ngIf="!(client?.picture)" name="contact"></ion-icon>
     </ion-row>
   </ion-col>
   <ion-col col-7>

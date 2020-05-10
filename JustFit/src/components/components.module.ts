@@ -6,13 +6,17 @@ import { ShrinkingHeaderComponent } from './shrinking-header/shrinking-header';
 import { ReviewsListComponent } from './reviews-list/reviews-list';
 import { ReviewListItemComponent } from './review-list-item/review-list-item';
 import { ReviewStarsComponent } from './review-stars/review-stars';
+import { ClientsListComponent } from './clients-list/clients-list';
+import { ClientListItemComponent } from './client-list-item/client-list-item';
 @NgModule({
 	declarations: [
 		CommonNavbarComponent,
 		ShrinkingHeaderComponent,
-    ReviewsListComponent,
-    ReviewListItemComponent,
-    ReviewStarsComponent
+		ReviewsListComponent,
+		ReviewListItemComponent,
+		ReviewStarsComponent,
+		ClientsListComponent,
+		ClientListItemComponent
 	],
 	imports: [
 		CommonModule,
@@ -21,9 +25,11 @@ import { ReviewStarsComponent } from './review-stars/review-stars';
 	exports: [
 		CommonNavbarComponent,
 		ShrinkingHeaderComponent,
-    ReviewsListComponent,
-    ReviewListItemComponent,
-    ReviewStarsComponent
+		ReviewsListComponent,
+		ReviewListItemComponent,
+		ReviewStarsComponent,
+		ClientsListComponent,
+		ClientListItemComponent
 	]
 })
 export class ComponentsModule { }
