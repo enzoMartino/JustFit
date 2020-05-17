@@ -1,5 +1,4 @@
 import { IClientRepository } from "./client.interface.repository";
-import { ReviewModel } from "../../models/review.model";
 import { AngularFirestore } from 'angularfire2/firestore';
 import { EnumDbCollectionNames } from "../../models/enum.db.colletionsNames";
 import { Injectable } from "@angular/core";

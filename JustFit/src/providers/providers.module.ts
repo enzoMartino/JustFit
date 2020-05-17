@@ -4,7 +4,8 @@ import { AuthProvider } from "./auth-provider/auth.provider";
 import { FormsValidatorProvider } from "./forms-validator/forms-validator.provider";
 import { LoaderProvider } from "./loader/loader.provider";
 import { SessionProvider } from "./session/session.provider";
-
+import { CacheProvider } from "./cache/cache.provider";
+import { ExerciseProvider } from "./exercise/exercise.provider";
 
 @NgModule({
   declarations: [
@@ -14,7 +15,9 @@ import { SessionProvider } from "./session/session.provider";
     AuthProvider,
     FormsValidatorProvider,
     LoaderProvider,
-    SessionProvider
+    SessionProvider,
+    CacheProvider,
+    ExerciseProvider
   ],
   exports: [
   ]

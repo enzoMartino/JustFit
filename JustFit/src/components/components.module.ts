@@ -8,6 +8,10 @@ import { ReviewListItemComponent } from './review-list-item/review-list-item';
 import { ReviewStarsComponent } from './review-stars/review-stars';
 import { ClientsListComponent } from './clients-list/clients-list';
 import { ClientListItemComponent } from './client-list-item/client-list-item';
+import { ExercisesListComponent } from './exercises-list/exercises-list';
+import { ExerciseListItemComponent } from './exercise-list-item/exercise-list-item';
+import { ExerciseCategotyCardComponent } from './exercise-categoty-card/exercise-categoty-card';
+import { ExercisesCategoriesGridComponent } from './exercises-categories-grid/exercises-categories-grid';
 @NgModule({
 	declarations: [
 		CommonNavbarComponent,
@@ -16,7 +20,11 @@ import { ClientListItemComponent } from './client-list-item/client-list-item';
 		ReviewListItemComponent,
 		ReviewStarsComponent,
 		ClientsListComponent,
-		ClientListItemComponent
+		ClientListItemComponent,
+		ExercisesListComponent,
+		ExerciseListItemComponent,
+		ExerciseCategotyCardComponent,
+		ExercisesCategoriesGridComponent
 	],
 	imports: [
 		CommonModule,
@@ -29,7 +37,11 @@ import { ClientListItemComponent } from './client-list-item/client-list-item';
 		ReviewListItemComponent,
 		ReviewStarsComponent,
 		ClientsListComponent,
-		ClientListItemComponent
+		ClientListItemComponent,
+		ExercisesListComponent,
+		ExerciseListItemComponent,
+		ExerciseCategotyCardComponent,
+		ExercisesCategoriesGridComponent
 	]
 })
 export class ComponentsModule { }

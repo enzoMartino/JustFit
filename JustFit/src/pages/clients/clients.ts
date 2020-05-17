@@ -24,7 +24,7 @@ export class ClientsPage {
   ) {
   }
 
-  async ionViewDidEnter() {
+  async ionViewDidLoad() {
     await this.loaderProvider.showLoader();
     this.clientsList = await this.clientFirebaseRepository
       .getClientsByPersonalTrainerId(this.sessionProvider.loggedPersonaltrainer.id);

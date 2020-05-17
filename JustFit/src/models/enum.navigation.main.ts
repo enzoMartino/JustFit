@@ -4,5 +4,6 @@ export enum EnumNavigationMain {
     ClientsPage = "ClientsPage",
     TabsPage = "TabsPage",
     LoginPage = "LoginPage",
-    SignupPage = "SignupPage"
+    SignupPage = "SignupPage",
+    CreateGymSheetPage = "CreateGymSheetPage"
 }

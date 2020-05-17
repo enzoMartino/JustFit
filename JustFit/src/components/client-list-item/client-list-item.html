@@ -21,7 +21,7 @@
   </ion-item>
   <ion-item-options side="right">
     <button *ngIf="client?.gymSheetId" ion-button (click)="favorite(item)">Edit Gym Sheet</button>
-    <button *ngIf="!(client?.gymSheetId)" ion-button (click)="favorite(item)">Create Gym Sheet</button>
+    <button *ngIf="!(client?.gymSheetId)" ion-button (click)="onCreateGymSheetButtonClicked()">Create Gym Sheet</button>
     <button ion-button color="danger" (click)="share(item)">Contact</button>
   </ion-item-options>
 </ion-item-sliding>

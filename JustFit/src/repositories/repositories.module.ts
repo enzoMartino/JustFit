@@ -4,6 +4,9 @@ import { PersonalTrainerFirebaseRepository } from "./personal.trainer/personal.t
 import { ReviewFirebaseRepository } from "./review/review.firebase.repository";
 import { GymSheetFirebaseRepository } from "./gym.sheet/gym.sheet.firebase.repository";
 import { ClientFirebaseRepository } from "./client/client.firebase.repository";
+import { ExerciseHttpRepository } from "./exercise/exercise.http.repository";
+import { BaseHttpRepository } from "./base.http.repository";
+import { CategoryHttpRepository } from "./category/category.http.repository";
 
 
 @NgModule({
@@ -11,10 +14,13 @@ import { ClientFirebaseRepository } from "./client/client.firebase.repository";
   ],
   providers: [
     BaseFirebaseRepository,
+    BaseHttpRepository,
     PersonalTrainerFirebaseRepository,
     ReviewFirebaseRepository,
     GymSheetFirebaseRepository,
-    ClientFirebaseRepository
+    ClientFirebaseRepository,
+    ExerciseHttpRepository,
+    CategoryHttpRepository
   ],
   exports: [
   ]

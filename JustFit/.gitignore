@@ -29,7 +29,8 @@ plugins/android.json
 plugins/ios.json
 www/
 $RECYCLE.BIN/
-src/models/common/firebase-config.ts
+src/models/common/firebase.config.ts
+src/models/common/gym.api.config.ts
 
 .DS_Store
 Thumbs.db

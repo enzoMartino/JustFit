@@ -6,10 +6,11 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFirestoreModule, AngularFirestore, FirestoreSettingsToken } from 'angularfire2/firestore';
-import { firebaseConfig } from '../models//firebase-config';
+import { firebaseConfig } from '../models/firebase.config';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { RepositoriesModule } from '../repositories/repositories.module';
 import { ProvidersModule } from '../providers/providers.module';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,10 @@ import { ProvidersModule } from '../providers/providers.module';
   ],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(MyApp),
+    HttpClientModule,
+    IonicModule.forRoot(MyApp, {
+      tabsHideOnSubPages: true
+    }),
     AngularFireModule.initializeApp(firebaseConfig),
     AngularFirestoreModule,
     ProvidersModule,

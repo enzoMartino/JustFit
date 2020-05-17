@@ -7,7 +7,7 @@ import FirebaseAuthProvider = firebase.auth.AuthProvider;
 import { EnumPersonTypes } from '../../models/enum.person.types';
 import { SessionProvider } from '../session/session.provider';
 import { PersonalTrainerFirebaseRepository } from '../../repositories/personal.trainer/personal.trainer.firebase.repository';
-import { GoogleProfileModel } from '../../models/google-profile.model';
+import { GoogleProfileModel } from '../../models/google.profile.model';
 
 @Injectable()
 export class AuthProvider {
