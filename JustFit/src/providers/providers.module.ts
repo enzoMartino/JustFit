@@ -6,6 +6,7 @@ import { LoaderProvider } from "./loader/loader.provider";
 import { SessionProvider } from "./session/session.provider";
 import { CacheProvider } from "./cache/cache.provider";
 import { ExerciseProvider } from "./exercise/exercise.provider";
+import { CategoryProvider } from "./category/category.provider";
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { ExerciseProvider } from "./exercise/exercise.provider";
     LoaderProvider,
     SessionProvider,
     CacheProvider,
-    ExerciseProvider
+    ExerciseProvider,
+    CategoryProvider
   ],
   exports: [
   ]

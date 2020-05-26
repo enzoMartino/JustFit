@@ -7,6 +7,7 @@ import { ClientFirebaseRepository } from "./client/client.firebase.repository";
 import { ExerciseHttpRepository } from "./exercise/exercise.http.repository";
 import { BaseHttpRepository } from "./base.http.repository";
 import { CategoryHttpRepository } from "./category/category.http.repository";
+import { ExerciseImageHttpRepository } from "./exercise-image/exercise.image.http.repository";
 
 
 @NgModule({
@@ -20,7 +21,8 @@ import { CategoryHttpRepository } from "./category/category.http.repository";
     GymSheetFirebaseRepository,
     ClientFirebaseRepository,
     ExerciseHttpRepository,
-    CategoryHttpRepository
+    CategoryHttpRepository,
+    ExerciseImageHttpRepository
   ],
   exports: [
   ]
