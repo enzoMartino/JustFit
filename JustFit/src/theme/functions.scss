@@ -1,0 +1,19 @@
+// Apple iPhone 6s iOS 9
+// Screen Size 4.7 INCH
+// Resolution 750 x 1334 PX
+// Viewport 375 x 667 PX
+// Ratio 375 : 100 = px : vw
+
+@function calculateVw($size) {
+    $vwSize: $size / 375px;
+    @return $vwSize * 100vw;
+}
+
+// MAPPING VARIABLES - FONT
+// ----------------------------
+// Valori ottenuti rispetto alla font size = 12, considerata 1rem.
+// Il valore è ottenuto dalla proporzione 12:1=px:em
+@function calculateRem($size) {
+    $remSize: $size / 12px;
+    @return $remSize * 1rem;
+}
