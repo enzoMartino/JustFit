@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { ExerciseApiModel } from '../../models/exercise.api.model';
 
 @Component({
   selector: 'exercises-list',
@@ -7,6 +8,18 @@ import { Component } from '@angular/core';
 
 export class ExercisesListComponent {
 
-  constructor() {}
+  @Input() exercisesList: ExerciseApiModel[];
+
+  @Output() addButtonClicked: EventEmitter<ExerciseApiModel>;
+  @Output() viewButtonClicked: EventEmitter<ExerciseApiModel>;
+
+  constructor() {
+    this.addButtonClicked = new EventEmitter();
+    this.viewButtonClicked = new EventEmitter();
+  }
+
+  onAddButtonClicked(exercise: ExerciseApiModel) { this.addButtonClicked.emit(exercise); }
+
+  onViewButtonClicked(exercise: ExerciseApiModel) { this.viewButtonClicked.emit(exercise); }
 
 }

@@ -1,3 +1,6 @@
 exercise-list-item {
-
+    .exercise-image {
+        width: calculateVw(55px) !important;
+        height: calculateVw(50px) !important;
+    }
 }

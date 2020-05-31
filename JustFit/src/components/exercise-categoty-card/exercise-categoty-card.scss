@@ -3,7 +3,7 @@ exercise-categoty-card {
         height: calculateVw(90px);
     }
     .category-card-row {
-        box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.3);
+        box-shadow: calculateVw(10px) calculateVw(10px) calculateVw(5px) 0 rgba(0, 0, 0, 0.3);
         position: relative;
         text-align: center;
     }

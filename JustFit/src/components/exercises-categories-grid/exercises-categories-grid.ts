@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, EventEmitter, Output } from '@angular/core';
 import { CategoryApiModel } from '../../models/category.api.model';
 
 @Component({
@@ -9,7 +9,15 @@ import { CategoryApiModel } from '../../models/category.api.model';
 export class ExercisesCategoriesGridComponent {
 
   @Input() exerciseCategories: CategoryApiModel[];
- 
-  constructor() { }
+
+  @Output() exerciseCategoryCardClicked: EventEmitter<CategoryApiModel>;
+
+  constructor() {
+    this.exerciseCategoryCardClicked = new EventEmitter();
+  }
+
+  onExerciseCategoryCardClicked(index: number) {
+    this.exerciseCategoryCardClicked.emit(this.exerciseCategories[index]);
+  }
 
 }

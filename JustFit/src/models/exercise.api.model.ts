@@ -6,4 +6,6 @@ export class ExerciseApiModel {
     muscles: number[];
     muscles_secondary: number[];
     equipment: number[];
+    image: string;
+    comment: string;
 }

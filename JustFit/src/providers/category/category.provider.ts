@@ -47,7 +47,8 @@ export class CategoryProvider {
     //     i++;
     //   } while (category.image === undefined && exercises.next !== null);
     // }));
-    const exercisesCategories = await this.categoryHttpRepository.retrieveExercisesCategories().toPromise();
+    const exercisesCategories = await this.categoryHttpRepository
+      .retrieveExercisesCategories().toPromise();
     exercisesCategories.forEach(x => { x.image = this.categoriesImagesMap[x.id]; });
     return exercisesCategories;
   }

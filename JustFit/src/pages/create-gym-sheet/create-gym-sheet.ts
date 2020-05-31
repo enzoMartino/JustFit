@@ -4,6 +4,7 @@ import { LoaderProvider } from '../../providers/loader/loader.provider';
 import { CategoryApiModel } from '../../models/category.api.model';
 import { AlertProvider } from '../../providers/alert/alert.provider';
 import { CategoryProvider } from '../../providers/category/category.provider';
+import { EnumNavigationMain } from '../../models/enum.navigation.main';
 
 @IonicPage()
 @Component({
@@ -26,13 +27,15 @@ export class CreateGymSheetPage {
   async ionViewDidLoad() {
     await this.loaderProvider.showLoader();
     try {
-      const start = Date.now();
       this.exerciseCategories = await this.categoryProvider.retrieveExercisesCategoriesWithImages();
-      console.log("Timer ended " + ((Date.now() - start)/1000));
     } catch (error) {
       this.alertProvider.presentErrorAlert(error);
     }
     await this.loaderProvider.hideLoader();
+  }
+
+  onExerciseCategoryCardClicked(exerciseCategory: CategoryApiModel) { 
+    this.navCtrl.push(EnumNavigationMain.ExerciseCategoryDetailPage, { exerciseCategory });
   }
 
 }

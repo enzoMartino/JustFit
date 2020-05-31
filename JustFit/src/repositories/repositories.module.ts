@@ -8,6 +8,7 @@ import { ExerciseHttpRepository } from "./exercise/exercise.http.repository";
 import { BaseHttpRepository } from "./base.http.repository";
 import { CategoryHttpRepository } from "./category/category.http.repository";
 import { ExerciseImageHttpRepository } from "./exercise-image/exercise.image.http.repository";
+import { ExerciseCommentHttpRepository } from "./exercise-comment/exercise.comment.http.repository";
 
 
 @NgModule({
@@ -22,7 +23,8 @@ import { ExerciseImageHttpRepository } from "./exercise-image/exercise.image.htt
     ClientFirebaseRepository,
     ExerciseHttpRepository,
     CategoryHttpRepository,
-    ExerciseImageHttpRepository
+    ExerciseImageHttpRepository,
+    ExerciseCommentHttpRepository
   ],
   exports: [
   ]

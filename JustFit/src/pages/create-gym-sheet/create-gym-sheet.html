@@ -5,5 +5,8 @@
 </ion-header>
 
 <ion-content padding>
-  <exercises-categories-grid [exerciseCategories]="exerciseCategories"></exercises-categories-grid>
+  <exercises-categories-grid 
+    (exerciseCategoryCardClicked)="onExerciseCategoryCardClicked($event)"
+    [exerciseCategories]="exerciseCategories">
+  </exercises-categories-grid>
 </ion-content>

@@ -1,8 +1,11 @@
 <ion-grid>
   <ion-row>
-    <ng-container *ngFor="let exerciseCategory of exerciseCategories">
+    <ng-container *ngFor="let exerciseCategory of exerciseCategories; let i = index">
       <ion-col class="category-card-col" col-6>
-        <exercise-categoty-card [exerciseCategory]="exerciseCategory"></exercise-categoty-card>
+        <exercise-categoty-card 
+          (click)="onExerciseCategoryCardClicked(i)" 
+          [exerciseCategory]="exerciseCategory">
+        </exercise-categoty-card>
       </ion-col>
     </ng-container>
   </ion-row>

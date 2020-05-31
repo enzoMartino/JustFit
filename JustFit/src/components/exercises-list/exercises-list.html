@@ -1,5 +1,9 @@
 <ion-list>
-  <ion-item *ngFor="let item of items">
-    {{ item }}
-  </ion-item>
+  <ng-container *ngFor="let exercise of exercisesList">
+    <exercise-list-item 
+      (addButtonClicked)="onAddButtonClicked($event)"
+      (viewButtonClicked)="onViewButtonClicked($event)"
+      [exercise]="exercise">
+    </exercise-list-item>
+  </ng-container>
 </ion-list>
