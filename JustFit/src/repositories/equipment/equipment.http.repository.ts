@@ -14,7 +14,7 @@ export class EquipmentHttpRepository implements IEquipmentRepository {
     ) { }
 
     retrieveEquipmentById(id: number) {
-        const endpoint = `${this.API_ADDRESS}${id}`;
+        const endpoint = `${this.API_ADDRESS}${id}/`;
         return this.baseHttpRepository
             .makeGetRequestWithCache<EquipmentApiModel>(endpoint,
                 GymApiConfig.httpHeaders);

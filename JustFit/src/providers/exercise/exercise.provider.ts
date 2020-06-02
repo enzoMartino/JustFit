@@ -70,6 +70,7 @@ export class ExerciseProvider {
   }
 
   async retrieveExerciseMusclesByIds(ids: number[]) {
+    ids = Array.from(new Set(ids));
     return await Promise.all(ids.map(async (id) => {
       return await this.muscleHttpRepository.retrieveMuscleById(id).toPromise();
     }));

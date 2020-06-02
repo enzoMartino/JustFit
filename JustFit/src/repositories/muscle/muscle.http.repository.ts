@@ -14,7 +14,7 @@ export class MuscleHttpRepository implements IMuscleRepository {
     ) { }
 
     retrieveMuscleById(id: number) {
-        const endpoint = `${this.API_ADDRESS}${id}`;
+        const endpoint = `${this.API_ADDRESS}${id}/`;
         return this.baseHttpRepository
             .makeGetRequestWithCache<MuscleApiModel>(endpoint,
                 GymApiConfig.httpHeaders);
