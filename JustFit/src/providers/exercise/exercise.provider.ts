@@ -6,6 +6,8 @@ import { of } from 'rxjs';
 import { ExerciseImageApiModel } from '../../models/exercise.image.api.model';
 import { ExerciseCommentHttpRepository } from '../../repositories/exercise-comment/exercise.comment.http.repository';
 import { ExerciseCommentApiModel } from '../../models/exercise.comment.api.model';
+import { MuscleHttpRepository } from '../../repositories/muscle/muscle.http.repository';
+import { EquipmentHttpRepository } from '../../repositories/equipment/equipment.http.repository';
 
 @Injectable()
 export class ExerciseProvider {
@@ -13,7 +15,9 @@ export class ExerciseProvider {
   constructor(
     private readonly exerciseHttpRepository: ExerciseHttpRepository,
     private readonly exerciseImageHttpRepository: ExerciseImageHttpRepository,
-    private readonly exerciseCommentHttpRepository: ExerciseCommentHttpRepository
+    private readonly exerciseCommentHttpRepository: ExerciseCommentHttpRepository,
+    private readonly muscleHttpRepository: MuscleHttpRepository,
+    private readonly equipmentHttpRepository: EquipmentHttpRepository
   ) { }
 
   async retrieveExercises() {
@@ -57,6 +61,18 @@ export class ExerciseProvider {
       )
       .toPromise();
     return response.comment;
+  }
+
+  async retrieveExerciseEquipmentsByIds(ids: number[]) {
+    return await Promise.all(ids.map(async (id) => {
+      return await this.equipmentHttpRepository.retrieveEquipmentById(id).toPromise();
+    }));
+  }
+
+  async retrieveExerciseMusclesByIds(ids: number[]) {
+    return await Promise.all(ids.map(async (id) => {
+      return await this.muscleHttpRepository.retrieveMuscleById(id).toPromise();
+    }));
   }
 
 }

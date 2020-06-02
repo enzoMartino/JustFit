@@ -1,4 +1,4 @@
-export class GenericApiResponseModel<T> {
+export class GenericMultipleApiResponseModel<T> {
     count: number;
     next: string;
     previous: string;

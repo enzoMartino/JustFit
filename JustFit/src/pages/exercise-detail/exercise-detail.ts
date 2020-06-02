@@ -4,6 +4,8 @@ import { ExerciseApiModel } from '../../models/exercise.api.model';
 import { ExerciseProvider } from '../../providers/exercise/exercise.provider';
 import { AlertProvider } from '../../providers/alert/alert.provider';
 import { LoaderProvider } from '../../providers/loader/loader.provider';
+import { MuscleApiModel } from '../../models/muscle.api.model';
+import { EquipmentApiModel } from '../../models/equipment.api.model';
 
 @IonicPage()
 @Component({
@@ -13,6 +15,8 @@ import { LoaderProvider } from '../../providers/loader/loader.provider';
 export class ExerciseDetailPage {
 
   exercise: ExerciseApiModel;
+  exerciseMuscles: MuscleApiModel[];
+  exerciseEquipments: EquipmentApiModel[];
 
   constructor(
     public navCtrl: NavController,
@@ -29,6 +33,10 @@ export class ExerciseDetailPage {
     try {
       this.exercise.comment = await this.exerciseProvider
         .retrieveExerciseCommentByExerciseId(this.exercise.id);
+      this.exerciseEquipments = await this.exerciseProvider
+        .retrieveExerciseEquipmentsByIds(this.exercise.equipment);
+      this.exerciseMuscles = await this.exerciseProvider
+        .retrieveExerciseMusclesByIds(this.exercise.muscles.concat(this.exercise.muscles_secondary));
     } catch (error) {
       this.alertProvider.presentErrorAlert(error);
     }

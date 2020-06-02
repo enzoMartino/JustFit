@@ -12,6 +12,10 @@ import { ExercisesListComponent } from './exercises-list/exercises-list';
 import { ExerciseListItemComponent } from './exercise-list-item/exercise-list-item';
 import { ExerciseCategotyCardComponent } from './exercise-categoty-card/exercise-categoty-card';
 import { ExercisesCategoriesGridComponent } from './exercises-categories-grid/exercises-categories-grid';
+import { ExerciseMusclesListComponent } from './exercise-muscles-list/exercise-muscles-list';
+import { ExerciseEquipmentsListComponent } from './exercise-equipments-list/exercise-equipments-list';
+import { ExerciseEquipmentsListItemComponent } from './exercise-equipments-list-item/exercise-equipments-list-item';
+import { ExerciseMusclesListItemComponent } from './exercise-muscles-list-item/exercise-muscles-list-item';
 @NgModule({
 	declarations: [
 		CommonNavbarComponent,
@@ -24,7 +28,11 @@ import { ExercisesCategoriesGridComponent } from './exercises-categories-grid/ex
 		ExercisesListComponent,
 		ExerciseListItemComponent,
 		ExerciseCategotyCardComponent,
-		ExercisesCategoriesGridComponent
+		ExercisesCategoriesGridComponent,
+		ExerciseMusclesListComponent,
+		ExerciseEquipmentsListComponent,
+		ExerciseEquipmentsListItemComponent,
+		ExerciseMusclesListItemComponent
 	],
 	imports: [
 		CommonModule,
@@ -41,7 +49,11 @@ import { ExercisesCategoriesGridComponent } from './exercises-categories-grid/ex
 		ExercisesListComponent,
 		ExerciseListItemComponent,
 		ExerciseCategotyCardComponent,
-		ExercisesCategoriesGridComponent
+		ExercisesCategoriesGridComponent,
+		ExerciseMusclesListComponent,
+		ExerciseEquipmentsListComponent,
+		ExerciseEquipmentsListItemComponent,
+		ExerciseMusclesListItemComponent
 	]
 })
 export class ComponentsModule { }

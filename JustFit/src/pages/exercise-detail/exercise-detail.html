@@ -13,10 +13,10 @@
   <ion-row><p class="margin-auto">{{exercise?.comment}}</p></ion-row>
   <ion-row>
     <ion-col>
-
+      <exercise-muscles-list [exerciseMuscles]="exerciseMuscles"></exercise-muscles-list>
     </ion-col>
     <ion-col>
-
+      <exercise-equipments-list [exerciseEquipments]=exerciseEquipments></exercise-equipments-list>
     </ion-col>
   </ion-row>
 </ion-content>

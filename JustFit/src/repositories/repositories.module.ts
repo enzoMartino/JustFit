@@ -9,6 +9,8 @@ import { BaseHttpRepository } from "./base.http.repository";
 import { CategoryHttpRepository } from "./category/category.http.repository";
 import { ExerciseImageHttpRepository } from "./exercise-image/exercise.image.http.repository";
 import { ExerciseCommentHttpRepository } from "./exercise-comment/exercise.comment.http.repository";
+import { MuscleHttpRepository } from "./muscle/muscle.http.repository";
+import { EquipmentHttpRepository } from "./equipment/equipment.http.repository";
 
 
 @NgModule({
@@ -24,7 +26,9 @@ import { ExerciseCommentHttpRepository } from "./exercise-comment/exercise.comme
     ExerciseHttpRepository,
     CategoryHttpRepository,
     ExerciseImageHttpRepository,
-    ExerciseCommentHttpRepository
+    ExerciseCommentHttpRepository,
+    MuscleHttpRepository,
+    EquipmentHttpRepository
   ],
   exports: [
   ]
