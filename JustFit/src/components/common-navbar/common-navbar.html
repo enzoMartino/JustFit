@@ -1,10 +1,15 @@
 <ion-navbar color="white">
   <ion-title>{{title}}</ion-title>
+  <ion-buttons start>
+    <button *ngIf="hasCloseButton" (click)="onCloseButtonClicked()" ion-button clear>
+      <ion-icon color="primary" class="close-button bold" name="close"></ion-icon>
+    </button>
+  </ion-buttons>
   <ion-buttons end>
-    <button class="padding-right-m" ion-button icon-only (click)="onLogoutClicked($event)">
+    <button *ngIf="hasSettingsButton" class="padding-right-m" ion-button icon-only (click)="onLogoutClicked($event)">
       <ion-icon color="primary" class="bold" name="settings"></ion-icon>
     </button>
-    <button ion-button icon-only (click)="onLogoutClicked($event)">
+    <button *ngIf="hasLogoutButton" ion-button icon-only (click)="onLogoutClicked($event)">
       <ion-icon color="primary" class="bold" name="log-out"></ion-icon>
     </button>
   </ion-buttons>

@@ -25,9 +25,8 @@ export class CreateGymSheetPage {
     public navParams: NavParams
   ) { }
 
-  async ionViewDidLoad() { }
-
   onDayOfWeekClicked(dayOfWeek: string) {
     this.navCtrl.push(EnumNavigationMain.ExercisesCategoriesPage, { dayOfWeek });
   }
+  
 }

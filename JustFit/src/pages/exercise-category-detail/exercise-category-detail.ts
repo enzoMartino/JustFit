@@ -36,13 +36,12 @@ export class ExerciseCategoryDetailPage {
     this.dayOfWeek = this.navParams.data.dayOfWeek;
   }
 
-  async ionViewDidLoad() {
-    await this.loaderProvider.showLoader();
-    await this.retrieveCategoryExercises();
-    await this.loaderProvider.hideLoader();
+  ionViewDidEnter() {
+    this.retrieveCategoryExercises();
   }
 
   async retrieveCategoryExercises() {
+    await this.loaderProvider.showLoader();
     if (this.hasMoreExercises) {
       try {
         const response = await this.exerciseProvider
@@ -53,11 +52,12 @@ export class ExerciseCategoryDetailPage {
         this.alertProvider.presentErrorAlert(error);
       }
     }
+    await this.loaderProvider.hideLoader();
   }
 
   onExerciseClicked(index: number) {
     this.modalCtrl.create(EnumNavigationMain.ExerciseDetailPage,
       { exercise: this.exercisesList[index], dayOfWeek: this.dayOfWeek }).present();
   }
- 
+
 }

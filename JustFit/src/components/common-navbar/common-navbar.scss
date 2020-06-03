@@ -1,6 +1,8 @@
 common-navbar {
-    .toolbar-title-md,
-    .toolbar-title-ios {
-        font-size: calculateRem(35px);
+    .back-button {
+        color: color($colors, primary) !important;
+    }
+    .close-button {
+        font-size: calculateRem(50px);
     }
 }

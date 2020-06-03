@@ -1,10 +1,6 @@
-<ion-header>
-  <ion-navbar>
-    <button (click)="onCloseButtonClicked()" ion-button clear>
-      <ion-icon class="close-button bold" name="close"></ion-icon>
-    </button>
-    <ion-title>ExerciseDetail</ion-title>
-  </ion-navbar>
+<ion-header no-border>
+  <common-navbar [hasLogoutButton]="false" [hasSettingsButton]="false" [hasCloseButton]="true"
+    (closeButtonClicked)="onCloseButtonClicked()"></common-navbar>
 </ion-header>
 
 <ion-content padding>
@@ -31,7 +27,7 @@
   <ion-row>
     <ion-col col-2>
       <button icon-only ion-button clear>
-        <ion-icon class="input-icon" name="remove"></ion-icon>
+        <ion-icon class="input-icon bold" name="remove"></ion-icon>
       </button>
     </ion-col>
     <ion-col col-8>
@@ -42,14 +38,14 @@
     </ion-col>
     <ion-col col-2>
       <button icon-only ion-button clear>
-        <ion-icon class="input-icon" name="add"></ion-icon>
+        <ion-icon class="input-icon bold" name="add"></ion-icon>
       </button>
     </ion-col>
   </ion-row>
   <ion-row>
     <ion-col col-2>
       <button icon-only ion-button clear>
-        <ion-icon class="input-icon" name="remove"></ion-icon>
+        <ion-icon class="input-icon bold" name="remove"></ion-icon>
       </button>
     </ion-col>
     <ion-col col-8>
@@ -60,14 +56,14 @@
     </ion-col>
     <ion-col col-2>
       <button icon-only ion-button clear>
-        <ion-icon class="input-icon" name="add"></ion-icon>
+        <ion-icon class="input-icon bold" name="add"></ion-icon>
       </button>
     </ion-col>
   </ion-row>
   <ion-row>
     <ion-col col-2>
       <button icon-only ion-button clear>
-        <ion-icon class="input-icon" name="remove"></ion-icon>
+        <ion-icon class="input-icon bold" name="remove"></ion-icon>
       </button>
     </ion-col>
     <ion-col col-8>
@@ -78,7 +74,7 @@
     </ion-col>
     <ion-col col-2>
       <button icon-only ion-button clear>
-        <ion-icon class="input-icon" name="add"></ion-icon>
+        <ion-icon class="input-icon bold" name="add"></ion-icon>
       </button>
     </ion-col>
   </ion-row>

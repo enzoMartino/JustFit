@@ -27,14 +27,19 @@ export class ExercisesCategoriesPage {
     this.dayOfWeek = this.navParams.data.dayOfWeek;
   }
 
-  async ionViewDidLoad() {
-    await this.loaderProvider.showLoader();
+  ionViewDidLoad() {
+    this.retrieveExercisesCategoriesWithImages();
+  }
+
+  async retrieveExercisesCategoriesWithImages() {
+    //TODO: MOVE LOADER IN THE HTTP INTERCEPTOR
+    this.loaderProvider.showLoader();
     try {
       this.exerciseCategories = await this.categoryProvider.retrieveExercisesCategoriesWithImages();
     } catch (error) {
       this.alertProvider.presentErrorAlert(error);
     }
-    await this.loaderProvider.hideLoader();
+    this.loaderProvider.hideLoader();
   }
 
   onExerciseCategoryCardClicked(exerciseCategory: CategoryApiModel) {

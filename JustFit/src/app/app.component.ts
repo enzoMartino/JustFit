@@ -46,7 +46,6 @@ export class MyApp {
           this.splashScreen.hide();
         },
           error => {
-            console.log(error);
             this.rootPage = EnumNavigationMain.LoginPage;
             this.splashScreen.hide();
           });

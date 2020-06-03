@@ -39,7 +39,7 @@ export class ExerciseProvider {
         .retrieveExerciseImageByExerciseId(exercise.id)
         .pipe(
           first(images => images.count > 0),
-          catchError(error => of(console.log(error))),
+          catchError(error => of(undefined)),
           map(images => images ?
             images.results[0] :
             new ExerciseImageApiModel("assets/imgs/exercises/exercise-placeholder.png"))
@@ -54,7 +54,7 @@ export class ExerciseProvider {
       .retrieveExerciseCommentByExerciseId(id)
       .pipe(
         first(comments => comments.count > 0),
-        catchError(error => of(console.log(error))),
+        catchError(error => of(undefined)),
         map(comments => comments ?
           comments.results[0] :
           new ExerciseCommentApiModel("There is no comment for this exercise"))
