@@ -9,11 +9,11 @@ client-list-item {
         margin-right: auto;
         margin-top: auto;
         margin-bottom: auto;
-        font-size: 20px;
     }
-    .client_name_row {
-    }
-    .max_height {
-        height: 100%;
+    .input-item {
+        padding-left: 0;
+        .item-inner {
+            padding-right: 0 !important;
+        }
     }
 }

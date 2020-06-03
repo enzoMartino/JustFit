@@ -1,8 +1,11 @@
-<ion-navbar>
+<ion-navbar color="white">
   <ion-title>{{title}}</ion-title>
   <ion-buttons end>
+    <button class="padding-right-m" ion-button icon-only (click)="onLogoutClicked($event)">
+      <ion-icon color="primary" class="bold" name="settings"></ion-icon>
+    </button>
     <button ion-button icon-only (click)="onLogoutClicked($event)">
-      <ion-icon name="log-out"></ion-icon>
+      <ion-icon color="primary" class="bold" name="log-out"></ion-icon>
     </button>
   </ion-buttons>
 </ion-navbar>

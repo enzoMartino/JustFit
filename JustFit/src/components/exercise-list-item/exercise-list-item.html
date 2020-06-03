@@ -2,7 +2,5 @@
     <ion-thumbnail item-start>
         <img class="exercise-image" src="{{ exercise?.image }}">
     </ion-thumbnail>
-    <h2 class="text-overflow-ellipsis">{{ exercise?.name }}</h2>
-    <button (click)="onAddButtonClicked()" ion-button round item-end color="default">Add</button>
-    <button (click)="onViewButtonClicked()" ion-button round item-end color="secondary">View</button>
+    <p class="text-overflow-ellipsis bold black-color exercise-name">{{ exercise?.name }}</p>
 </ion-item>

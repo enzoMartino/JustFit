@@ -1,0 +1,16 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>ExercisesCategories</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <exercises-categories-grid 
+    (exerciseCategoryCardClicked)="onExerciseCategoryCardClicked($event)"
+    [exerciseCategories]="exerciseCategories">
+  </exercises-categories-grid>
+</ion-content>
+
+<ion-footer padding>
+  <button ion-button block>View Gym Sheet</button>
+</ion-footer>

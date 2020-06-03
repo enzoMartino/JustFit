@@ -14,3 +14,33 @@
 .height-100 {
     height: 100%;
 }
+.capitalize {
+    text-transform: capitalize;
+}
+.bold {
+    font-weight: bold;
+}
+.black-color {
+    color: black !important;
+}
+.font-size-m {
+    font-size: calculateRem(20px);
+}
+.font-size-l {
+    font-size: calculateRem(35px);
+}
+.padding-right-m {
+    padding-right: calculateVw(15px) !important;
+}
+.no-padding-bottom {
+    padding-bottom: 0;
+}
+.margin-bottom-auto {
+    margin-bottom: auto;
+}
+.margin-left-auto {
+    margin-left: auto;
+}
+.margin-right-auto {
+    margin-right: auto;
+}

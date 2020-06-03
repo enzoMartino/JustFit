@@ -8,4 +8,5 @@ export class ExerciseApiModel {
     equipment: number[];
     image: string;
     comment: string;
+    isAdded: boolean;
 }

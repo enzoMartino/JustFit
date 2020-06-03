@@ -10,16 +10,12 @@ export class ExercisesListComponent {
 
   @Input() exercisesList: ExerciseApiModel[];
 
-  @Output() addButtonClicked: EventEmitter<ExerciseApiModel>;
-  @Output() viewButtonClicked: EventEmitter<ExerciseApiModel>;
+  @Output() exerciseClicked: EventEmitter<number>;
 
   constructor() {
-    this.addButtonClicked = new EventEmitter();
-    this.viewButtonClicked = new EventEmitter();
+    this.exerciseClicked = new EventEmitter();
   }
 
-  onAddButtonClicked(exercise: ExerciseApiModel) { this.addButtonClicked.emit(exercise); }
-
-  onViewButtonClicked(exercise: ExerciseApiModel) { this.viewButtonClicked.emit(exercise); }
+  onExerciseClicked(index: number) { this.exerciseClicked.emit(index); }
 
 }

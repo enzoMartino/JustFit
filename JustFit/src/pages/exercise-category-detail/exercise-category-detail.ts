@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ModalController } from 'ionic-angular';
 import { LoaderProvider } from '../../providers/loader/loader.provider';
 import { ExerciseProvider } from '../../providers/exercise/exercise.provider';
 import { AlertProvider } from '../../providers/alert/alert.provider';
@@ -17,12 +17,14 @@ export class ExerciseCategoryDetailPage {
   private exerciseCategory: CategoryApiModel;
   private page: number;
   private hasMoreExercises: boolean;
+  private dayOfWeek: string;
 
   exercisesList: ExerciseApiModel[];
 
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
+    public modalCtrl: ModalController,
     private readonly loaderProvider: LoaderProvider,
     private readonly exerciseProvider: ExerciseProvider,
     private readonly alertProvider: AlertProvider
@@ -31,6 +33,7 @@ export class ExerciseCategoryDetailPage {
     this.page = 0;
     this.hasMoreExercises = true;
     this.exerciseCategory = this.navParams.data.exerciseCategory;
+    this.dayOfWeek = this.navParams.data.dayOfWeek;
   }
 
   async ionViewDidLoad() {
@@ -52,12 +55,9 @@ export class ExerciseCategoryDetailPage {
     }
   }
 
-  onAddButtonClicked(exercise: ExerciseApiModel) {
-
+  onExerciseClicked(index: number) {
+    this.modalCtrl.create(EnumNavigationMain.ExerciseDetailPage,
+      { exercise: this.exercisesList[index], dayOfWeek: this.dayOfWeek }).present();
   }
-
-  onViewButtonClicked(exercise: ExerciseApiModel) {
-    this.navCtrl.push(EnumNavigationMain.ExerciseDetailPage, { exercise });
-  }
-
+ 
 }

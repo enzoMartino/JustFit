@@ -14,7 +14,8 @@ import { PersonalTrainerModel } from '../../models/personal.trainer.model';
 export class ProfilePage {
 
   readonly pageTitle = "Profile";
-  readonly shrinkingHeaderHeight = 250;
+  readonly shrinkingHeaderHeight = 200;
+
   personalTrainer: PersonalTrainerModel;
   reviewsList: ReviewModel[] = [];
 

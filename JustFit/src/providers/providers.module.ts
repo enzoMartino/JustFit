@@ -7,6 +7,8 @@ import { SessionProvider } from "./session/session.provider";
 import { CacheProvider } from "./cache/cache.provider";
 import { ExerciseProvider } from "./exercise/exercise.provider";
 import { CategoryProvider } from "./category/category.provider";
+import { GymSheetCreatorProvider } from "./gym-sheet-creator/gym-sheet-creator.provider";
+import { ToastProvider } from "./toast/toast.provider";
 
 @NgModule({
   declarations: [
@@ -19,7 +21,9 @@ import { CategoryProvider } from "./category/category.provider";
     SessionProvider,
     CacheProvider,
     ExerciseProvider,
-    CategoryProvider
+    CategoryProvider,
+    GymSheetCreatorProvider,
+    ToastProvider
   ],
   exports: [
   ]

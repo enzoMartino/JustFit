@@ -1,0 +1,6 @@
+<ion-list>
+  <ng-container *ngFor="let day of daysOfWeek; let i = index">
+    <days-of-week-list-item (click)="onDayOfWeekClicked(i)" [day]="day">
+    </days-of-week-list-item>
+  </ng-container>
+</ion-list>

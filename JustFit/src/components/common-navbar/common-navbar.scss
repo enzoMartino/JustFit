@@ -1,3 +1,6 @@
 common-navbar {
-
+    .toolbar-title-md,
+    .toolbar-title-ios {
+        font-size: calculateRem(35px);
+    }
 }

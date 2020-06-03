@@ -1,9 +1,6 @@
 <ion-list>
-  <ng-container *ngFor="let exercise of exercisesList">
-    <exercise-list-item 
-      (addButtonClicked)="onAddButtonClicked($event)"
-      (viewButtonClicked)="onViewButtonClicked($event)"
-      [exercise]="exercise">
+  <ng-container *ngFor="let exercise of exercisesList; let i = index">
+    <exercise-list-item (click)="onExerciseClicked(i)" [exercise]="exercise">
     </exercise-list-item>
   </ng-container>
 </ion-list>

@@ -1,5 +1,8 @@
 <ion-header>
   <ion-navbar>
+    <button (click)="onCloseButtonClicked()" ion-button clear>
+      <ion-icon class="close-button bold" name="close"></ion-icon>
+    </button>
     <ion-title>ExerciseDetail</ion-title>
   </ion-navbar>
 </ion-header>
@@ -8,9 +11,15 @@
   <ion-row>
     <img class="exercise-image border-radius-50 margin-auto" src="{{exercise?.image}}" alt="">
   </ion-row>
-  <ion-row><p class="margin-auto">{{exercise?.name}}</p></ion-row>
-  <ion-row><p class="margin-auto">{{exercise?.description}}</p></ion-row>
-  <ion-row><p class="margin-auto">{{exercise?.comment}}</p></ion-row>
+  <ion-row>
+    <p class="margin-auto">{{exercise?.name}}</p>
+  </ion-row>
+  <ion-row>
+    <p class="margin-auto">{{exercise?.description}}</p>
+  </ion-row>
+  <ion-row>
+    <p class="margin-auto">{{exercise?.comment}}</p>
+  </ion-row>
   <ion-row>
     <ion-col>
       <exercise-muscles-list [exerciseMuscles]="exerciseMuscles"></exercise-muscles-list>
@@ -19,4 +28,67 @@
       <exercise-equipments-list [exerciseEquipments]=exerciseEquipments></exercise-equipments-list>
     </ion-col>
   </ion-row>
+  <ion-row>
+    <ion-col col-2>
+      <button icon-only ion-button clear>
+        <ion-icon class="input-icon" name="remove"></ion-icon>
+      </button>
+    </ion-col>
+    <ion-col col-8>
+      <ion-item class="input-item">
+        <ion-label class="font-size-m">Reps</ion-label>
+        <ion-input type="number"></ion-input>
+      </ion-item>
+    </ion-col>
+    <ion-col col-2>
+      <button icon-only ion-button clear>
+        <ion-icon class="input-icon" name="add"></ion-icon>
+      </button>
+    </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col col-2>
+      <button icon-only ion-button clear>
+        <ion-icon class="input-icon" name="remove"></ion-icon>
+      </button>
+    </ion-col>
+    <ion-col col-8>
+      <ion-item class="input-item">
+        <ion-label class="font-size-m">Sets</ion-label>
+        <ion-input [clearInput]="true" type="number"></ion-input>
+      </ion-item>
+    </ion-col>
+    <ion-col col-2>
+      <button icon-only ion-button clear>
+        <ion-icon class="input-icon" name="add"></ion-icon>
+      </button>
+    </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col col-2>
+      <button icon-only ion-button clear>
+        <ion-icon class="input-icon" name="remove"></ion-icon>
+      </button>
+    </ion-col>
+    <ion-col col-8>
+      <ion-item class="input-item">
+        <ion-label class="font-size-m">Rest (in seconds)</ion-label>
+        <ion-input [clearInput]="true" type="number"></ion-input>
+      </ion-item>
+    </ion-col>
+    <ion-col col-2>
+      <button icon-only ion-button clear>
+        <ion-icon class="input-icon" name="add"></ion-icon>
+      </button>
+    </ion-col>
+  </ion-row>
 </ion-content>
+
+<ion-footer padding>
+  <button class="font-size-m" *ngIf="!exercise.isAdded" (click)="onAddButtonClicked()" ion-button block>Add</button>
+  <button class="font-size-m" *ngIf="exercise.isAdded" (click)="onEditButtonClicked()" ion-button block>Edit</button>
+  <button class="font-size-m" *ngIf="exercise.isAdded" (click)="onRemoveButtonClicked()" ion-button block
+    color="danger">
+    Remove
+  </button>
+</ion-footer>

@@ -16,6 +16,8 @@ import { ExerciseMusclesListComponent } from './exercise-muscles-list/exercise-m
 import { ExerciseEquipmentsListComponent } from './exercise-equipments-list/exercise-equipments-list';
 import { ExerciseEquipmentsListItemComponent } from './exercise-equipments-list-item/exercise-equipments-list-item';
 import { ExerciseMusclesListItemComponent } from './exercise-muscles-list-item/exercise-muscles-list-item';
+import { DaysOfWeekListComponent } from './days-of-week-list/days-of-week-list';
+import { DaysOfWeekListItemComponent } from './days-of-week-list-item/days-of-week-list-item';
 @NgModule({
 	declarations: [
 		CommonNavbarComponent,
@@ -32,7 +34,9 @@ import { ExerciseMusclesListItemComponent } from './exercise-muscles-list-item/e
 		ExerciseMusclesListComponent,
 		ExerciseEquipmentsListComponent,
 		ExerciseEquipmentsListItemComponent,
-		ExerciseMusclesListItemComponent
+		ExerciseMusclesListItemComponent,
+    DaysOfWeekListComponent,
+    DaysOfWeekListItemComponent
 	],
 	imports: [
 		CommonModule,
@@ -53,7 +57,9 @@ import { ExerciseMusclesListItemComponent } from './exercise-muscles-list-item/e
 		ExerciseMusclesListComponent,
 		ExerciseEquipmentsListComponent,
 		ExerciseEquipmentsListItemComponent,
-		ExerciseMusclesListItemComponent
+		ExerciseMusclesListItemComponent,
+    DaysOfWeekListComponent,
+    DaysOfWeekListItemComponent
 	]
 })
 export class ComponentsModule { }

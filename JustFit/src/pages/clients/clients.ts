@@ -13,6 +13,7 @@ import { SessionProvider } from '../../providers/session/session.provider';
 export class ClientsPage {
 
   readonly pageTitle = "Clients";
+  
   clientsList: ClientModel[] = [];
 
   constructor(

@@ -20,7 +20,9 @@ import { HttpClientModule } from '@angular/common/http';
     BrowserModule,
     HttpClientModule,
     IonicModule.forRoot(MyApp, {
-      tabsHideOnSubPages: true
+      tabsHideOnSubPages: true,
+      backButtonText: ""
+      //, backButtonIcon: "" TODO: UNCOMMENT
     }),
     AngularFireModule.initializeApp(firebaseConfig),
     AngularFirestoreModule,

@@ -5,8 +5,8 @@
 </ion-header>
 
 <ion-content padding>
-  <exercises-categories-grid 
-    (exerciseCategoryCardClicked)="onExerciseCategoryCardClicked($event)"
-    [exerciseCategories]="exerciseCategories">
-  </exercises-categories-grid>
+  <days-of-week-list
+    (dayOfWeekClicked)="onDayOfWeekClicked($event)"
+    [daysOfWeek]="daysOfWeek">
+  </days-of-week-list>
 </ion-content>

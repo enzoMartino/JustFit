@@ -1,24 +1,23 @@
 <ion-item-sliding #item>
-  <ion-item>
+  <ion-item class="input-item">
+    <ion-avatar item-start>
+      <img class="client_photo" *ngIf="client?.picture" src="{{client?.picture}}" alt="">
+      <ion-icon *ngIf="!(client?.picture)" name="contact"></ion-icon>
+    </ion-avatar>
     <ion-row>
-      <ion-col col-2>
-        <ion-row class="reviewer_photo_row">
-          <img class="client_photo" *ngIf="client?.picture" src="{{client?.picture}}" alt="">
-          <ion-icon *ngIf="!(client?.picture)" name="contact"></ion-icon>
+      <ion-col col-11>
+        <ion-row class="height-100">
+          <span class="client_name font-size-m bold">{{client?.name}} {{client?.surname}}</span>
         </ion-row>
       </ion-col>
-      <ion-col col-9>
-        <ion-row class="max_height">
-          <span class="client_name">{{client?.name}} {{client?.surname}}</span>
-        </ion-row>
-      </ion-col>
-      <ion-col col-1>
-        <ion-row class="max_height">
+      <ion-col class="no-padding-bottom" col-1>
+        <ion-row class="height-100">
           <ion-icon class="more_icon" name="more"></ion-icon>
         </ion-row>
       </ion-col>
     </ion-row>
   </ion-item>
+  <!-- TODO ANIMATE WHEN CLICK -->
   <ion-item-options side="right">
     <button *ngIf="client?.gymSheetId" ion-button (click)="favorite(item)">Edit Gym Sheet</button>
     <button *ngIf="!(client?.gymSheetId)" ion-button (click)="onCreateGymSheetButtonClicked()">Create Gym Sheet</button>
