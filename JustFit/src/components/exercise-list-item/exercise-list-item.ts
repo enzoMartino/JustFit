@@ -1,4 +1,4 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { ExerciseApiModel } from '../../models/exercise.api.model';
 
 @Component({
@@ -10,6 +10,6 @@ export class ExerciseListItemComponent {
 
   @Input() exercise: ExerciseApiModel;
 
-  constructor() {}
+  constructor() { }
 
 }

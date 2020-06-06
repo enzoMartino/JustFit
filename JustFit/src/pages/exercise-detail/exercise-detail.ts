@@ -20,6 +20,9 @@ export class ExerciseDetailPage {
   exercise: ExerciseApiModel;
   exerciseMuscles: MuscleApiModel[];
   exerciseEquipments: EquipmentApiModel[];
+  rest: number;
+  reps: number;
+  sets: number;
 
   constructor(
     public navCtrl: NavController,
@@ -32,6 +35,9 @@ export class ExerciseDetailPage {
   ) {
     this.exercise = this.navParams.data.exercise;
     this.dayOfWeek = this.navParams.data.dayOfWeek;
+    this.rest = 0;
+    this.reps = 1;
+    this.sets = 1;
   }
 
   async ionViewDidLoad() {
@@ -50,13 +56,10 @@ export class ExerciseDetailPage {
   }
 
   onAddButtonClicked() {
-    const alert = this.alertProvider.presentAddingExerciseAlert();
-    alert.onWillDismiss((data: { sets: number, reps: number, rest: number }) => {
-      this.gymSheetCreatorProvider
-        .addExerciseToGymSheet(this.dayOfWeek, data.sets, data.reps,
-          data.rest, this.exercise.id);
-      this.exercise.isAdded = true;
-    });
+    this.gymSheetCreatorProvider
+      .addExerciseToGymSheet(this.dayOfWeek, this.sets, this.reps,
+        this.rest, this.exercise.id);
+    this.exercise.isAdded = true;
   }
 
   onCloseButtonClicked() {
@@ -64,12 +67,9 @@ export class ExerciseDetailPage {
   }
 
   onEditButtonClicked() {
-    const alert = this.alertProvider.presentAddingExerciseAlert();
-    alert.onWillDismiss((data: { sets: number, reps: number, rest: number }) => {
-      this.gymSheetCreatorProvider
-        .addExerciseToGymSheet(this.dayOfWeek, data.sets, data.reps,
-          data.rest, this.exercise.id);
-    });
+    this.gymSheetCreatorProvider
+      .addExerciseToGymSheet(this.dayOfWeek, this.sets, this.reps,
+        this.rest, this.exercise.id);
   }
 
   onRemoveButtonClicked() {
@@ -77,5 +77,17 @@ export class ExerciseDetailPage {
       .removeExerciseFromGymSheet(this.dayOfWeek, this.exercise.id);
     this.exercise.isAdded = false;
   }
+
+  increaseReps() { this.reps++; }
+
+  increaseSets() { this.sets++; }
+
+  increaseRest() { this.rest += 5; }
+
+  decreaseReps() { if (this.reps > 1) { this.reps--; } }
+
+  decreaseSets() { if (this.sets > 1) { this.sets--; } }
+
+  decreaseRest() { if (this.rest > 0) { this.rest -= 5; } }
 
 }

@@ -25,55 +25,55 @@
     </ion-col>
   </ion-row>
   <ion-row>
-    <ion-col col-2>
-      <button icon-only ion-button clear>
+    <ion-col col-3>
+      <button (click)="decreaseReps()" icon-only ion-button clear>
         <ion-icon class="input-icon bold" name="remove"></ion-icon>
       </button>
     </ion-col>
-    <ion-col col-8>
-      <ion-item class="input-item">
-        <ion-label class="font-size-m">Reps</ion-label>
-        <ion-input type="number"></ion-input>
+    <ion-col col-6>
+      <ion-item class="input-item height-100">
+        <ion-label class="font-size-s bold">Reps</ion-label>
+        <ion-input class="font-size-s" step="1" min="1" [(ngModel)]="reps" type="number"></ion-input>
       </ion-item>
     </ion-col>
-    <ion-col col-2>
-      <button icon-only ion-button clear>
+    <ion-col col-3>
+      <button (click)="increaseReps()" icon-only ion-button clear>
         <ion-icon class="input-icon bold" name="add"></ion-icon>
       </button>
     </ion-col>
   </ion-row>
   <ion-row>
-    <ion-col col-2>
-      <button icon-only ion-button clear>
+    <ion-col col-3>
+      <button (click)="decreaseSets()" icon-only ion-button clear>
         <ion-icon class="input-icon bold" name="remove"></ion-icon>
       </button>
     </ion-col>
-    <ion-col col-8>
-      <ion-item class="input-item">
-        <ion-label class="font-size-m">Sets</ion-label>
-        <ion-input [clearInput]="true" type="number"></ion-input>
+    <ion-col col-6>
+      <ion-item class="input-item height-100">
+        <ion-label class="font-size-s bold">Sets</ion-label>
+        <ion-input class="font-size-s" step="1" min="1" [(ngModel)]="sets" type="number"></ion-input>
       </ion-item>
     </ion-col>
-    <ion-col col-2>
-      <button icon-only ion-button clear>
+    <ion-col col-3>
+      <button (click)="increaseSets()" icon-only ion-button clear>
         <ion-icon class="input-icon bold" name="add"></ion-icon>
       </button>
     </ion-col>
   </ion-row>
   <ion-row>
-    <ion-col col-2>
-      <button icon-only ion-button clear>
+    <ion-col col-3>
+      <button (click)="decreaseRest()" icon-only ion-button clear>
         <ion-icon class="input-icon bold" name="remove"></ion-icon>
       </button>
     </ion-col>
-    <ion-col col-8>
-      <ion-item class="input-item">
-        <ion-label class="font-size-m">Rest (in seconds)</ion-label>
-        <ion-input [clearInput]="true" type="number"></ion-input>
+    <ion-col col-6>
+      <ion-item class="input-item height-100">
+        <ion-label class="font-size-s bold">Rest (in seconds)</ion-label>
+        <ion-input class="font-size-s" step="5" min="0" [(ngModel)]="rest" type="number"></ion-input>
       </ion-item>
     </ion-col>
-    <ion-col col-2>
-      <button icon-only ion-button clear>
+    <ion-col col-3>
+      <button (click)="increaseRest()" icon-only ion-button clear>
         <ion-icon class="input-icon bold" name="add"></ion-icon>
       </button>
     </ion-col>
@@ -81,9 +81,11 @@
 </ion-content>
 
 <ion-footer padding>
-  <button class="font-size-m" *ngIf="!exercise.isAdded" (click)="onAddButtonClicked()" ion-button block>Add</button>
-  <button class="font-size-m" *ngIf="exercise.isAdded" (click)="onEditButtonClicked()" ion-button block>Edit</button>
-  <button class="font-size-m" *ngIf="exercise.isAdded" (click)="onRemoveButtonClicked()" ion-button block
+  <button class="font-size-m bold" *ngIf="!exercise.isAdded" (click)="onAddButtonClicked()" ion-button
+    block>Add</button>
+  <button class="font-size-m bold" *ngIf="exercise.isAdded" (click)="onEditButtonClicked()" ion-button
+    block>Edit</button>
+  <button class="font-size-m bold" *ngIf="exercise.isAdded" (click)="onRemoveButtonClicked()" ion-button block
     color="danger">
     Remove
   </button>

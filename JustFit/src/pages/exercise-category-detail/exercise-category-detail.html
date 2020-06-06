@@ -3,12 +3,14 @@
 </ion-header>
 
 <ion-content padding>
-  <exercises-list
-    (exerciseClicked)="onExerciseClicked($event)"
-    [exercisesList]="exercisesList">
+  <exercises-list (exerciseClicked)="onExerciseClicked($event)" [exercisesList]="exercisesList">
   </exercises-list>
   <ion-infinite-scroll (ionInfinite)="$event.waitFor(retrieveCategoryExercises())">
     <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="Loading more exercises...">
     </ion-infinite-scroll-content>
   </ion-infinite-scroll>
 </ion-content>
+
+<ion-footer padding>
+  <button class="font-size-m bold" ion-button block>View Gym Sheet</button>
+</ion-footer>
