@@ -60,4 +60,8 @@ export class ExerciseCategoryDetailPage {
       { exercise: this.exercisesList[index], dayOfWeek: this.dayOfWeek }).present();
   }
 
+  onViewGymSheetButtonClicked() {
+    this.navCtrl.popTo(this.navCtrl.getViews().find(x => x.id === EnumNavigationMain.CreateGymSheetPage));
+  }
+
 }

@@ -47,3 +47,15 @@
 .font-size-s {
     font-size: calculateRem(17px);
 }
+.color-primary {
+    color: color($colors, primary);
+}
+.margin-bottom-s {
+    margin-bottom: calculateVw(5px);
+}
+.padding-left-s {
+    padding-left: calculateVw(5px);
+}
+.margin-bottom-m {
+    margin-bottom: calculateVw(10px);
+}

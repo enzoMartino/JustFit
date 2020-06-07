@@ -3,7 +3,10 @@ exercise-list-item {
         width: calculateVw(50px) !important;
         height: calculateVw(50px) !important;
     }
-    .exercise-name{
+    .exercise-name {
         font-size: calculateRem(20px);
+    }
+    .added-border {
+        border-left: calculateVw(3px) color($colors, primary) solid;
     }
 }

@@ -1,5 +1,6 @@
-<ion-item class="padding-left-0">
-    <ion-thumbnail item-start>
+<p class="font-size-m bold color-primary margin-bottom-s" *ngIf="exercise.isAdded">Added</p>
+<ion-item [ngClass]="{'added-border': exercise.isAdded}" class="padding-left-0">
+    <ion-thumbnail [ngClass]="{'padding-left-s': exercise.isAdded}" item-start>
         <img class="exercise-image" src="{{ exercise?.image }}">
     </ion-thumbnail>
     <p class="text-overflow-ellipsis bold black-color exercise-name">{{ exercise?.name }}</p>

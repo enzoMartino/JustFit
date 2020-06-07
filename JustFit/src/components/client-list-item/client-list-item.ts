@@ -16,6 +16,7 @@ export class ClientListItemComponent {
     public navCtrl: NavController,
   ) { }
 
+  //TODO: MOVE TO THE VIEW PAGE
   onCreateGymSheetButtonClicked() {
     this.navCtrl.push(EnumNavigationMain.CreateGymSheetPage);
   }

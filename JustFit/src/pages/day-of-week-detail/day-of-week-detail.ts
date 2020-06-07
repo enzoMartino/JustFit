@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { CategoryApiModel } from '../../models/category.api.model';
+import { IonicPage, NavController, NavParams, ModalController } from 'ionic-angular';
 import { ExerciseApiModel } from '../../models/exercise.api.model';
 import { GymSheetCreatorProvider } from '../../providers/gym-sheet-creator/gym-sheet-creator.provider';
 import { EnumNavigationMain } from '../../models/enum.navigation.main';
@@ -15,9 +14,6 @@ import { AlertProvider } from '../../providers/alert/alert.provider';
 })
 export class DayOfWeekDetailPage {
 
-  private exerciseCategory: CategoryApiModel;
-  private page: number;
-  private hasMoreExercises: boolean;
   private dayOfWeek: string;
 
   exercisesList: ExerciseApiModel[];
@@ -25,12 +21,14 @@ export class DayOfWeekDetailPage {
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
+    public modalCtrl: ModalController,
     private readonly gymSheetCreatorProvider: GymSheetCreatorProvider,
     private readonly exerciseProvider: ExerciseProvider,
     private readonly loaderProvider: LoaderProvider,
     private readonly alertProvider: AlertProvider
   ) {
     this.dayOfWeek = this.navParams.data.dayOfWeek;
+    this.exercisesList = [];
   }
 
   ionViewDidEnter() {
@@ -41,7 +39,9 @@ export class DayOfWeekDetailPage {
   async retrieveExercisesByIds(ids: number[]) {
     await this.loaderProvider.showLoader();
     try {
-      this.exercisesList = await this.exerciseProvider.retrieveExercisesByIds(ids);
+      const exercisesList = await this.exerciseProvider.retrieveExercisesByIds(ids);
+      exercisesList.forEach(x => x.isAdded = true);
+      this.exercisesList = exercisesList;
     } catch (error) {
       this.alertProvider.presentErrorAlert(error);
     }
@@ -50,6 +50,11 @@ export class DayOfWeekDetailPage {
 
   onAddExerciseButtonClicked() {
     this.navCtrl.push(EnumNavigationMain.ExercisesCategoriesPage, { dayOfWeek: this.dayOfWeek });
+  }
+
+  onExerciseClicked(index: number) {
+    this.modalCtrl.create(EnumNavigationMain.ExerciseDetailPage,
+      { exercise: this.exercisesList[index], dayOfWeek: this.dayOfWeek }).present();
   }
 
 }

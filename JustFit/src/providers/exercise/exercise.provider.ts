@@ -9,7 +9,6 @@ import { ExerciseCommentApiModel } from '../../models/exercise.comment.api.model
 import { MuscleHttpRepository } from '../../repositories/muscle/muscle.http.repository';
 import { EquipmentHttpRepository } from '../../repositories/equipment/equipment.http.repository';
 import { ExerciseApiModel } from '../../models/exercise.api.model';
-import { GenericMultipleApiResponseModel } from '../../models/generic.multiple.api.response.model';
 
 @Injectable()
 export class ExerciseProvider {
