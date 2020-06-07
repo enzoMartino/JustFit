@@ -8,6 +8,8 @@ import { ExerciseCommentHttpRepository } from '../../repositories/exercise-comme
 import { ExerciseCommentApiModel } from '../../models/exercise.comment.api.model';
 import { MuscleHttpRepository } from '../../repositories/muscle/muscle.http.repository';
 import { EquipmentHttpRepository } from '../../repositories/equipment/equipment.http.repository';
+import { ExerciseApiModel } from '../../models/exercise.api.model';
+import { GenericMultipleApiResponseModel } from '../../models/generic.multiple.api.response.model';
 
 @Injectable()
 export class ExerciseProvider {
@@ -34,18 +36,7 @@ export class ExerciseProvider {
           return x;
         })
       ).toPromise();
-    await Promise.all(exercisesResponse.results.map(async (exercise, index) => {
-      const image = await this.exerciseImageHttpRepository
-        .retrieveExerciseImageByExerciseId(exercise.id)
-        .pipe(
-          first(images => images.count > 0),
-          catchError(error => of(undefined)),
-          map(images => images ?
-            images.results[0] :
-            new ExerciseImageApiModel("assets/imgs/exercises/exercise-placeholder.png"))
-        ).toPromise();
-      exercisesResponse.results[index].image = image.image;
-    }));
+    await this.retrieveExercisesImages(exercisesResponse.results);
     return exercisesResponse;
   }
 
@@ -64,6 +55,7 @@ export class ExerciseProvider {
   }
 
   async retrieveExerciseEquipmentsByIds(ids: number[]) {
+    ids = Array.from(new Set(ids));
     return await Promise.all(ids.map(async (id) => {
       return await this.equipmentHttpRepository.retrieveEquipmentById(id).toPromise();
     }));
@@ -73,6 +65,36 @@ export class ExerciseProvider {
     ids = Array.from(new Set(ids));
     return await Promise.all(ids.map(async (id) => {
       return await this.muscleHttpRepository.retrieveMuscleById(id).toPromise();
+    }));
+  }
+
+  async retrieveExercisesByIds(ids: number[]) {
+    ids = Array.from(new Set(ids));
+    const exercises = await Promise.all(ids.map(async (id) => {
+      return await this.exerciseHttpRepository.retrieveExerciseById(id)
+        .pipe(
+          map(x => {
+            x.description.replace(/<\/?[^>]+(>|$)/g, "");
+            return x;
+          }))
+        .toPromise();
+    }));
+    this.retrieveExercisesImages(exercises);
+    return exercises;
+  }
+
+  private async retrieveExercisesImages(exercises: ExerciseApiModel[]) {
+    await Promise.all(exercises.map(async (exercise, index) => {
+      const image = await this.exerciseImageHttpRepository
+        .retrieveExerciseImageByExerciseId(exercise.id)
+        .pipe(
+          first(images => images.count > 0),
+          catchError(error => of(undefined)),
+          map(images => images ?
+            images.results[0] :
+            new ExerciseImageApiModel("assets/imgs/exercises/exercise-placeholder.png"))
+        ).toPromise();
+      exercises[index].image = image.image;
     }));
   }
 

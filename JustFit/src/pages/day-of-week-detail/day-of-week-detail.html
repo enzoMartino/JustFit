@@ -3,9 +3,10 @@
 </ion-header>
 
 <ion-content padding>
-
+  <exercises-list (exerciseClicked)="onExerciseClicked($event)" [exercisesList]="exercisesList">
+  </exercises-list>
 </ion-content>
 
 <ion-footer padding>
-  <button class="font-size-m bold" ion-button block>View Gym Sheet</button>
+  <button (click)="onAddExerciseButtonClicked()" class="font-size-m bold" ion-button block>Add Exercise</button>
 </ion-footer>

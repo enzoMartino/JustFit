@@ -58,14 +58,14 @@ export class GymSheetCreatorProvider {
     return dayExercisesMap.get(exerciseId) !== undefined;
   }
 
-  isDayOfWeekMapExisting(dayOfWeek: string) {
-    return this.gymSheet.exercisesList.get(dayOfWeek) !== undefined;
-  }
-
   clearDayOfWeekMap(dayOfWeek: string) {
     const dayExercisesMap = this.gymSheet.exercisesList.get(dayOfWeek);
     dayExercisesMap.clear();
     this.toastProvider.presentInfoToast(`All exercises for ${dayOfWeek} has been removed`);
+  }
+
+  getDayOfWeekMap(dayOfWeek: string) {
+    return this.gymSheet.exercisesList.get(dayOfWeek);
   }
 
 }

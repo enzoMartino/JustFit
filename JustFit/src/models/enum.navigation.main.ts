@@ -8,5 +8,6 @@ export enum EnumNavigationMain {
     CreateGymSheetPage = "CreateGymSheetPage",
     ExerciseCategoryDetailPage = "ExerciseCategoryDetailPage",
     ExerciseDetailPage = "ExerciseDetailPage",
-    ExercisesCategoriesPage = "ExercisesCategoriesPage"
+    ExercisesCategoriesPage = "ExercisesCategoriesPage",
+    DayOfWeekDetailPage = "DayOfWeekDetailPage"
 }

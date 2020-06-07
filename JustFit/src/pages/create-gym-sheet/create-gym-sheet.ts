@@ -26,7 +26,7 @@ export class CreateGymSheetPage {
   ) { }
 
   onDayOfWeekClicked(dayOfWeek: string) {
-    this.navCtrl.push(EnumNavigationMain.ExercisesCategoriesPage, { dayOfWeek });
+    this.navCtrl.push(EnumNavigationMain.DayOfWeekDetailPage, { dayOfWeek });
   }
-  
+
 }

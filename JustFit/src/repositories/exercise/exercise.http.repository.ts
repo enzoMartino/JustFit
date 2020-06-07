@@ -9,23 +9,31 @@ import { map } from "rxjs/operators";
 @Injectable()
 export class ExerciseHttpRepository implements IExerciseRepository {
 
-    private readonly BASE_API_ADDRESS = `${GymApiConfig.baseUrl}/exercise/?language=2&status=2`;
+    private readonly BASE_API_ADDRESS = `${GymApiConfig.baseUrl}/exercise/`;
+    private readonly BASE_QUERY_PARAMETERS = `?language=2&status=2`;
 
     constructor(
         private readonly baseHttpRepository: BaseHttpRepository
     ) { }
 
     retrieveExercises(page: number = 1) {
-        const endpoint = `${this.BASE_API_ADDRESS}&page=${page}`;
+        const endpoint = `${this.BASE_API_ADDRESS}${this.BASE_QUERY_PARAMETERS}&page=${page}`;
         return this.baseHttpRepository
             .makeGetRequestWithCache<GenericMultipleApiResponseModel<ExerciseApiModel>>(endpoint,
                 GymApiConfig.httpHeaders).pipe(map(x => x.results));
     }
 
     retrieveExercisesByCategoryId(id: number, page: number = 1) {
-        const endpoint = `${this.BASE_API_ADDRESS}&category=${id}&page=${page}`;
+        const endpoint = `${this.BASE_API_ADDRESS}${this.BASE_QUERY_PARAMETERS}&category=${id}&page=${page}`;
         return this.baseHttpRepository
             .makeGetRequestWithCache<GenericMultipleApiResponseModel<ExerciseApiModel>>(endpoint,
+                GymApiConfig.httpHeaders);
+    }
+
+    retrieveExerciseById(id: number) {
+        const endpoint = `${this.BASE_API_ADDRESS}${id}/`;
+        return this.baseHttpRepository
+            .makeGetRequestWithCache<ExerciseApiModel>(endpoint,
                 GymApiConfig.httpHeaders);
     }
 
