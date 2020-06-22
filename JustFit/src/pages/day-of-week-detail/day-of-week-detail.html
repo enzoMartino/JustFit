@@ -3,9 +3,13 @@
 </ion-header>
 
 <ion-content padding>
+  <ion-row>
+    <p class="font-size-l bold capitalize-first-letter no-margin">{{dayOfWeek}}</p>
+  </ion-row>
   <exercises-list (exerciseClicked)="onExerciseClicked($event)" [exercisesList]="exercisesList">
   </exercises-list>
-  <p class="font-size-m bold" *ngIf="exercisesList.length == 0">There are no exrcises for this day of the week.
+  <p class="font-size-m bold" *ngIf="!isLoadingData && exercisesList.length == 0">There are no exrcises for this day of
+    the week.
     <br><br>Add new exercises.</p>
 </ion-content>
 

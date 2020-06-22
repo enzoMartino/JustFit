@@ -3,6 +3,9 @@
 </ion-header>
 
 <ion-content padding>
+  <ion-row class="margin-bottom-m">
+    <p class="font-size-l bold no-margin">Choose a category</p>
+  </ion-row>
   <exercises-categories-grid (exerciseCategoryCardClicked)="onExerciseCategoryCardClicked($event)"
     [exerciseCategories]="exerciseCategories">
   </exercises-categories-grid>

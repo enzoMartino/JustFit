@@ -3,6 +3,9 @@
 </ion-header>
 
 <ion-content padding>
+  <ion-row class="margin-bottom-l">
+    <p class="font-size-l bold capitalize-first-letter no-margin">Gym sheet's days</p>
+  </ion-row>
   <days-of-week-list
     (dayOfWeekClicked)="onDayOfWeekClicked($event)"
     [daysOfWeek]="daysOfWeek">

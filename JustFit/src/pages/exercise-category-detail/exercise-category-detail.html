@@ -3,6 +3,9 @@
 </ion-header>
 
 <ion-content padding>
+  <ion-row class="margin-bottom-m">
+    <p class="font-size-l bold capitalize-first-letter no-margin">{{exerciseCategory.name}}'s exercises</p>
+  </ion-row>
   <exercises-list (exerciseClicked)="onExerciseClicked($event)" [exercisesList]="exercisesList">
   </exercises-list>
   <ion-infinite-scroll (ionInfinite)="$event.waitFor(retrieveCategoryExercises())">

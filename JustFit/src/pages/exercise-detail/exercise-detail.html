@@ -7,8 +7,8 @@
   <ion-row>
     <img class="exercise-image border-radius-50 margin-auto" src="{{exercise?.image}}" alt="">
   </ion-row>
-  <ion-row>
-    <p class="margin-auto">{{exercise?.name}}</p>
+  <ion-row class="margin-bottom-m">
+    <p class="font-size-l bold capitalize-first-letter no-margin">{{exercise?.name}}</p>
   </ion-row>
   <ion-row>
     <p class="margin-auto">{{exercise?.description}}</p>
@@ -83,8 +83,8 @@
 <ion-footer padding>
   <button class="font-size-m bold" *ngIf="!exercise.isAdded" (click)="onAddButtonClicked()" ion-button
     block>Add</button>
-  <button class="font-size-m bold margin-bottom-m" *ngIf="exercise.isAdded" (click)="onEditButtonClicked()" ion-button
-    block>Edit</button>
+  <button [disabled]="isEditButtonDisabled()" class="font-size-m bold margin-bottom-m" *ngIf="exercise.isAdded"
+    (click)="onEditButtonClicked()" ion-button block>Edit</button>
   <button class="font-size-m bold" *ngIf="exercise.isAdded" (click)="onRemoveButtonClicked()" ion-button block
     color="danger">
     Remove

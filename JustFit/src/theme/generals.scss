@@ -14,7 +14,7 @@
 .height-100 {
     height: 100%;
 }
-.capitalize {
+.capitalize-first-letter::first-letter {
     text-transform: capitalize;
 }
 .bold {
@@ -58,4 +58,10 @@
 }
 .margin-bottom-m {
     margin-bottom: calculateVw(10px);
+}
+.margin-bottom-l {
+    margin-bottom: calculateVw(30px);
+}
+.no-margin {
+    margin: 0;
 }

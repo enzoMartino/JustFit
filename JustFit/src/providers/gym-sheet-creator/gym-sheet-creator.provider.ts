@@ -31,6 +31,7 @@ export class GymSheetCreatorProvider {
     isExerciseExisting ?
       this.toastProvider.presentInfoToast("Exercise has been updated") :
       this.toastProvider.presentInfoToast("Exercise has been added");
+    return exercise;
   }
 
   removeExerciseFromGymSheet(dayOfWeek: string, exerciseId: number) {
