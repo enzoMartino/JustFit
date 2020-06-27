@@ -8,7 +8,7 @@
     <img class="exercise-image border-radius-50 margin-auto" src="{{exercise?.image}}" alt="">
   </ion-row>
   <ion-row class="margin-bottom-m">
-    <p class="font-size-l bold capitalize-first-letter no-margin">{{exercise?.name}}</p>
+    <p class="font-size-l bold capitalize-first-letter margin-auto">{{exercise?.name}}</p>
   </ion-row>
   <ion-row>
     <p class="margin-auto">{{exercise?.description}}</p>
@@ -16,12 +16,23 @@
   <ion-row>
     <p class="margin-auto">{{exercise?.comment}}</p>
   </ion-row>
-  <ion-row>
+  <ion-row class="margin-top-l">
     <ion-col>
-      <exercise-muscles-list [exerciseMuscles]="exerciseMuscles"></exercise-muscles-list>
+      <ion-row>
+        <span class="margin-auto font-size-m bold">Muscles</span>
+      </ion-row>
+      <ion-row>
+        <exercise-muscles-list class="margin-auto" [exerciseMuscles]="exerciseMuscles"></exercise-muscles-list>
+      </ion-row>
     </ion-col>
     <ion-col>
-      <exercise-equipments-list [exerciseEquipments]=exerciseEquipments></exercise-equipments-list>
+      <ion-row>
+        <span class="margin-auto font-size-m bold">Equipments</span>
+      </ion-row>
+      <ion-row>
+        <exercise-equipments-list class="margin-auto" [exerciseEquipments]=exerciseEquipments>
+        </exercise-equipments-list>
+      </ion-row>
     </ion-col>
   </ion-row>
   <ion-row>

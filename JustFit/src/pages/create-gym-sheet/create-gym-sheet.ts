@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { EnumNavigationMain } from '../../models/enum.navigation.main';
+import { GymSheetCreatorProvider } from '../../providers/gym-sheet-creator/gym-sheet-creator.provider';
 
 @IonicPage()
 @Component({
@@ -22,11 +23,16 @@ export class CreateGymSheetPage {
 
   constructor(
     public navCtrl: NavController,
-    public navParams: NavParams
+    public navParams: NavParams,
+    private readonly gymSheetCreatorProvider: GymSheetCreatorProvider
   ) { }
 
   onDayOfWeekClicked(dayOfWeek: string) {
     this.navCtrl.push(EnumNavigationMain.DayOfWeekDetailPage, { dayOfWeek });
+  }
+
+  onSaveGymSheetButtonClicked() {
+
   }
 
 }

@@ -65,3 +65,18 @@
 .no-margin {
     margin: 0;
 }
+.margin-top-s {
+    margin-top: calculateVw(5px);
+}
+.margin-top-m {
+    margin-top: calculateVw(10px);
+}
+.margin-top-l {
+    margin-top: calculateVw(15px);
+}
+.text-align-center {
+    text-align: center;
+}
+.no-padding-top {
+    padding-top: 0 !important;
+}
