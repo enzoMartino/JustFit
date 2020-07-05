@@ -1,5 +1,5 @@
 <ion-header no-border>
-  <common-navbar></common-navbar>
+  <common-navbar (backButtonClicked)="backButtonClicked()"></common-navbar>
 </ion-header>
 
 <ion-content padding>
@@ -13,6 +13,6 @@
 </ion-content>
 
 <ion-footer padding>
-  <button [disabled]="true" class="font-size-m bold"
+  <button [disabled]="!hasGymSheetBeenModified" class="font-size-m bold"
     (click)="onSaveGymSheetButtonClicked()" ion-button block>Save Gym Sheet</button>
 </ion-footer>

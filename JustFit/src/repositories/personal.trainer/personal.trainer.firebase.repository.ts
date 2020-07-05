@@ -35,8 +35,8 @@ export class PersonalTrainerFirebaseRepository implements IPersonalTrainerReposi
     this.collectionName = EnumDbCollectionNames.PERSONAL_TRAINERS;
   }
 
-  async addPersonalTrainer(personalTrainer: PersonalTrainerModel): Promise<void> {
-    return this.baseFirebaseRepository.addDocument<PersonalTrainerModel>(personalTrainer,
+  async addPersonalTrainer(personalTrainer: PersonalTrainerModel): Promise<firebase.firestore.DocumentReference> {
+    return this.baseFirebaseRepository.saveDocument<PersonalTrainerModel>(personalTrainer,
       this.collectionReference);
   }
 

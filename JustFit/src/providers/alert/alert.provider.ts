@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { AlertController } from 'ionic-angular';
+import { AlertController, AlertButton } from 'ionic-angular';
 
 @Injectable()
 export class AlertProvider {
@@ -13,6 +13,22 @@ export class AlertProvider {
       title: "Error",
       subTitle: message,
       buttons: ["OK"]
+    }).present();
+  }
+
+  presentWarningAlert(message: string, buttons: AlertButton[]) {
+    this.alertCtrl.create({
+      title: "Warning",
+      subTitle: message,
+      buttons: buttons
+    }).present();
+  }
+
+  presentInfoAlert(message: string, buttons: AlertButton[]) {
+    this.alertCtrl.create({
+      title: "Info",
+      subTitle: message,
+      buttons: buttons
     }).present();
   }
 

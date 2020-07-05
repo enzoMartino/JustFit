@@ -4,6 +4,7 @@ import { ClientModel } from '../../models/client.model';
 import { LoaderProvider } from '../../providers/loader/loader.provider';
 import { ClientFirebaseRepository } from '../../repositories/client/client.firebase.repository';
 import { SessionProvider } from '../../providers/session/session.provider';
+import { EnumNavigationMain } from '../../models/enum.navigation.main';
 
 @IonicPage()
 @Component({
@@ -13,7 +14,7 @@ import { SessionProvider } from '../../providers/session/session.provider';
 export class ClientsPage {
 
   readonly pageTitle = "Clients";
-  
+
   clientsList: ClientModel[] = [];
 
   constructor(
@@ -30,6 +31,10 @@ export class ClientsPage {
     this.clientsList = await this.clientFirebaseRepository
       .getClientsByPersonalTrainerId(this.sessionProvider.loggedPersonaltrainer.id);
     await this.loaderProvider.hideLoader();
+  }
+
+  onCreateGymSheetButtonClicked(client: ClientModel) {
+    this.navCtrl.push(EnumNavigationMain.CreateGymSheetPage, { client });
   }
 
 }

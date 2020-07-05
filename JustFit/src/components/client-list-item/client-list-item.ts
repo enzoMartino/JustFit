@@ -1,7 +1,6 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { ClientModel } from '../../models/client.model';
 import { NavController } from 'ionic-angular';
-import { EnumNavigationMain } from '../../models/enum.navigation.main';
 
 @Component({
   selector: 'client-list-item',
@@ -12,13 +11,16 @@ export class ClientListItemComponent {
 
   @Input() client: ClientModel;
 
+  @Output() createGymSheetButtonClicked: EventEmitter<ClientModel>;
+
   constructor(
     public navCtrl: NavController,
-  ) { }
+  ) {
+    this.createGymSheetButtonClicked = new EventEmitter();
+  }
 
-  //TODO: MOVE TO THE VIEW PAGE
   onCreateGymSheetButtonClicked() {
-    this.navCtrl.push(EnumNavigationMain.CreateGymSheetPage);
+    this.createGymSheetButtonClicked.emit(this.client);
   }
 
 }

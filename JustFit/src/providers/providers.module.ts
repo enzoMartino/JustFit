@@ -10,6 +10,7 @@ import { CategoryProvider } from "./category/category.provider";
 import { GymSheetCreatorProvider } from "./gym-sheet-creator/gym-sheet-creator.provider";
 import { ToastProvider } from "./toast/toast.provider";
 import { ModalProvider } from "./modal/modal.provider";
+import { ClientProvider } from "./client/client.provider";
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { ModalProvider } from "./modal/modal.provider";
     CategoryProvider,
     GymSheetCreatorProvider,
     ToastProvider,
-    ModalProvider
+    ModalProvider,
+    ClientProvider
   ],
   exports: [
   ]

@@ -5,12 +5,25 @@ export class BaseFirebaseRepository {
 
   constructor() { }
 
-  async addDocument<T>(objcet: T, collectionReference: firebase.firestore.CollectionReference) {
+  async saveDocument<T>(object: T, collectionReference: firebase.firestore.CollectionReference) {
     try {
-      let obj = Object.assign({}, objcet);
-      await collectionReference.add(obj);
+      let obj: any = Object.assign({}, object);
+      let documentReference: firebase.firestore.DocumentReference;
+      if (obj.id) {
+        documentReference = collectionReference.doc(obj.id);
+        const documentSnapshot = await documentReference.get();
+        if (documentSnapshot.exists) {
+          await documentReference.set(obj);
+        } else {
+          documentReference = await collectionReference.add(obj);
+        }
+      } else {
+        documentReference = await collectionReference.add(obj);
+      }
+      return documentReference;
     } catch (error) {
       throw error;
     }
   }
+
 }

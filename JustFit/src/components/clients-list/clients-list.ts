@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { ClientModel } from '../../models/client.model';
 
 @Component({
@@ -10,6 +10,14 @@ export class ClientsListComponent {
 
   @Input() clientsList: ClientModel[];
 
-  constructor() { }
+  @Output() createGymSheetButtonClicked: EventEmitter<ClientModel>;
+
+  constructor() {
+    this.createGymSheetButtonClicked = new EventEmitter();
+  }
+
+  onCreateGymSheetButtonClicked(client: ClientModel) {
+    this.createGymSheetButtonClicked.emit(client)
+  }
 
 }

@@ -3,6 +3,7 @@ import { AngularFirestore } from 'angularfire2/firestore';
 import { EnumDbCollectionNames } from "../../models/enum.db.colletionsNames";
 import { Injectable } from "@angular/core";
 import { ClientModel } from "../../models/client.model";
+import { BaseFirebaseRepository } from "../base.firebase.repository";
 
 @Injectable()
 export class ClientFirebaseRepository implements IClientRepository {
@@ -27,7 +28,8 @@ export class ClientFirebaseRepository implements IClientRepository {
     }
 
     constructor(
-        private readonly firestore: AngularFirestore
+        private readonly firestore: AngularFirestore,
+        private readonly baseFirebaseRepository: BaseFirebaseRepository
     ) {
         this.collectionName = EnumDbCollectionNames.CLIENTS;
     }
@@ -37,9 +39,15 @@ export class ClientFirebaseRepository implements IClientRepository {
         let querySnapshot = await this.collectionReference.where("personalTrainerId", "==", id).get();
         querySnapshot.docs.forEach(x => {
             const client = x.data() as ClientModel;
+            client.id = x.id;
             clients.push(client);
         });
         return clients;
+    }
+
+    async saveClienInfos(client: ClientModel) {
+        return this.baseFirebaseRepository.saveDocument<ClientModel>(client,
+            this.collectionReference);
     }
 
 }

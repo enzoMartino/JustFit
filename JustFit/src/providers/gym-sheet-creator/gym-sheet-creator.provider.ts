@@ -3,17 +3,24 @@ import { GymSheetModel } from '../../models/gym.sheet.model';
 import { ExerciseFirebaseModel } from '../../models/exercise.firebase.model';
 import { ToastProvider } from '../toast/toast.provider';
 import { EnumWeekDays } from '../../models/enum.week-days';
+import { Subject } from 'rxjs';
 
 @Injectable()
 export class GymSheetCreatorProvider {
 
   private gymSheet: GymSheetModel;
+  public readonly onGymSheetChange: Subject<boolean>;
 
   constructor(
     private readonly toastProvider: ToastProvider
   ) {
     this.gymSheet = new GymSheetModel();
     this.gymSheet.exercisesList = new Map();
+    this.initGymSheetDaysOfWeek();
+    this.onGymSheetChange = new Subject();
+  }
+
+  private initGymSheetDaysOfWeek() {
     this.gymSheet.exercisesList.set(EnumWeekDays.Monday, new Map());
     this.gymSheet.exercisesList.set(EnumWeekDays.Tuesday, new Map());
     this.gymSheet.exercisesList.set(EnumWeekDays.Wednesday, new Map());
@@ -31,6 +38,7 @@ export class GymSheetCreatorProvider {
     isExerciseExisting ?
       this.toastProvider.presentInfoToast("Exercise has been updated") :
       this.toastProvider.presentInfoToast("Exercise has been added");
+    this.onGymSheetChange.next(true);
     return exercise;
   }
 
@@ -38,11 +46,14 @@ export class GymSheetCreatorProvider {
     const dayExercisesMap = this.gymSheet.exercisesList.get(dayOfWeek);
     dayExercisesMap.delete(exerciseId);
     this.toastProvider.presentInfoToast("Exercise has been removed");
+    this.onGymSheetChange.next(true);
   }
 
   clearGymSheet() {
     this.gymSheet.exercisesList.clear();
+    this.initGymSheetDaysOfWeek();
     this.toastProvider.presentInfoToast("Gym sheet has been cleared");
+    this.onGymSheetChange.next(true);
   }
 
   getGymSheet() {
@@ -63,6 +74,7 @@ export class GymSheetCreatorProvider {
     const dayExercisesMap = this.gymSheet.exercisesList.get(dayOfWeek);
     dayExercisesMap.clear();
     this.toastProvider.presentInfoToast(`All exercises for ${dayOfWeek} has been removed`);
+    this.onGymSheetChange.next(true);
   }
 
   getDayOfWeekMap(dayOfWeek: string) {
