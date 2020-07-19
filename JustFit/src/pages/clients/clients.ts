@@ -37,4 +37,8 @@ export class ClientsPage {
     this.navCtrl.push(EnumNavigationMain.CreateGymSheetPage, { client });
   }
 
+  onEditGymSheetButtonClicked(client: ClientModel) {
+    this.navCtrl.push(EnumNavigationMain.CreateGymSheetPage, { client });
+  }
+
 }

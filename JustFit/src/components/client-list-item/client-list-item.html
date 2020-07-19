@@ -19,7 +19,7 @@
   </ion-item>
   <!-- TODO ANIMATE WHEN CLICK -->
   <ion-item-options side="right">
-    <button *ngIf="client?.gymSheetId" ion-button (click)="favorite(item)">Edit Gym Sheet</button>
+    <button *ngIf="client?.gymSheetId" ion-button (click)="onEditGymSheetButtonClicked()">Edit Gym Sheet</button>
     <button *ngIf="!(client?.gymSheetId)" ion-button (click)="onCreateGymSheetButtonClicked()">Create Gym Sheet</button>
     <button ion-button color="danger" (click)="share(item)">Contact</button>
   </ion-item-options>

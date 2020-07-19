@@ -1,6 +1,7 @@
 <ion-list>
   <ng-container *ngFor="let client of clientsList; let i = index">
-    <client-list-item (createGymSheetButtonClicked)="onCreateGymSheetButtonClicked($event)" [client]="client">
+    <client-list-item (editGymSheetButtonClicked)="onEditGymSheetButtonClicked($event)"
+      (createGymSheetButtonClicked)="onCreateGymSheetButtonClicked($event)" [client]="client">
     </client-list-item>
   </ng-container>
 </ion-list>

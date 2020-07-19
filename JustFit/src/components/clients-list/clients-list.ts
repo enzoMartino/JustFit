@@ -11,13 +11,19 @@ export class ClientsListComponent {
   @Input() clientsList: ClientModel[];
 
   @Output() createGymSheetButtonClicked: EventEmitter<ClientModel>;
+  @Output() editGymSheetButtonClicked: EventEmitter<ClientModel>;
 
   constructor() {
     this.createGymSheetButtonClicked = new EventEmitter();
+    this.editGymSheetButtonClicked = new EventEmitter();
   }
 
   onCreateGymSheetButtonClicked(client: ClientModel) {
     this.createGymSheetButtonClicked.emit(client)
+  }
+
+  onEditGymSheetButtonClicked(client: ClientModel) {
+    this.editGymSheetButtonClicked.emit(client);
   }
 
 }

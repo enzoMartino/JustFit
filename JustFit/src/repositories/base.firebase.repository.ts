@@ -16,8 +16,9 @@ export class BaseFirebaseRepository {
           await documentReference.set(obj);
         } else {
           documentReference = await collectionReference.add(obj);
-        }
+        } 
       } else {
+        obj.id = null;
         documentReference = await collectionReference.add(obj);
       }
       return documentReference;

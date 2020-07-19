@@ -1,7 +1,6 @@
 import { Injectable } from "@angular/core";
 import { BaseHttpRepository } from "../base.http.repository";
 import { GymApiConfig } from "../../models/gym.api.config";
-import { GenericMultipleApiResponseModel } from "../../models/generic.multiple.api.response.model";
 import { IExerciseCommentRepository } from "./exercise.comment.interface.repository";
 import { ExerciseCommentApiModel } from "../../models/exercise.comment.api.model";
 
@@ -17,7 +16,7 @@ export class ExerciseCommentHttpRepository implements IExerciseCommentRepository
     retrieveExerciseCommentByExerciseId(id: number) {
         const endpoint = `${this.API_ADDRESS}&exercise=${id}`;
         return this.baseHttpRepository
-            .makeGetRequestWithCache<GenericMultipleApiResponseModel<ExerciseCommentApiModel>>(endpoint,
+            .makeGetRequestWithCache<Array<ExerciseCommentApiModel>>(endpoint,
                 GymApiConfig.httpHeaders);
     }
 

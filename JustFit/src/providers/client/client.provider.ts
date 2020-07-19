@@ -18,4 +18,9 @@ export class ClientProvider {
     await this.clientFirebaseRepository.saveClienInfos(client);
   }
 
+  async getClientGymSheet(gymSheetId: string) {
+    const gymSheet = await this.gymSheetFirebaseRepository.getGymSheetById(gymSheetId);
+    console.log(gymSheet);
+  }
+
 }

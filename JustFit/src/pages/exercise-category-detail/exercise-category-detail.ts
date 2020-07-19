@@ -16,7 +16,6 @@ export class ExerciseCategoryDetailPage {
 
   private exerciseCategory: CategoryApiModel;
   private page: number;
-  private hasMoreExercises: boolean;
   private dayOfWeek: string;
 
   exercisesList: ExerciseApiModel[];
@@ -31,7 +30,6 @@ export class ExerciseCategoryDetailPage {
   ) {
     this.exercisesList = [];
     this.page = 0;
-    this.hasMoreExercises = true;
     this.exerciseCategory = this.navParams.data.exerciseCategory;
     this.dayOfWeek = this.navParams.data.dayOfWeek;
   }
@@ -42,15 +40,12 @@ export class ExerciseCategoryDetailPage {
 
   async retrieveCategoryExercises() {
     await this.loaderProvider.showLoader();
-    if (this.hasMoreExercises) {
-      try {
-        const response = await this.exerciseProvider
-          .retrieveExercisesByCategoryIdWithImages(this.exerciseCategory.id, ++this.page);
-        this.hasMoreExercises = response.next !== null;
-        this.exercisesList.push(...response.results);
-      } catch (error) {
-        this.alertProvider.presentErrorAlert(error);
-      }
+    try {
+      const response = await this.exerciseProvider
+        .retrieveExercisesByCategoryIdWithImages(this.exerciseCategory.id, ++this.page);
+      this.exercisesList.push(...response);
+    } catch (error) {
+      this.alertProvider.presentErrorAlert(error);
     }
     await this.loaderProvider.hideLoader();
   }

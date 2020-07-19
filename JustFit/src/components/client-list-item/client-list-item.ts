@@ -12,15 +12,21 @@ export class ClientListItemComponent {
   @Input() client: ClientModel;
 
   @Output() createGymSheetButtonClicked: EventEmitter<ClientModel>;
+  @Output() editGymSheetButtonClicked: EventEmitter<ClientModel>;
 
   constructor(
     public navCtrl: NavController,
   ) {
     this.createGymSheetButtonClicked = new EventEmitter();
+    this.editGymSheetButtonClicked = new EventEmitter();
   }
 
   onCreateGymSheetButtonClicked() {
     this.createGymSheetButtonClicked.emit(this.client);
+  }
+
+  onEditGymSheetButtonClicked() {
+    this.editGymSheetButtonClicked.emit(this.client);
   }
 
 }

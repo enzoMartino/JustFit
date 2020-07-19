@@ -3,8 +3,6 @@ import { BaseHttpRepository } from "../base.http.repository";
 import { ExerciseApiModel } from "../../models/exercise.api.model";
 import { IExerciseRepository } from "./exercise.interface.repository";
 import { GymApiConfig } from "../../models/gym.api.config";
-import { GenericMultipleApiResponseModel } from "../../models/generic.multiple.api.response.model";
-import { map } from "rxjs/operators";
 
 @Injectable()
 export class ExerciseHttpRepository implements IExerciseRepository {
@@ -19,14 +17,14 @@ export class ExerciseHttpRepository implements IExerciseRepository {
     retrieveExercises(page: number = 1) {
         const endpoint = `${this.BASE_API_ADDRESS}${this.BASE_QUERY_PARAMETERS}&page=${page}`;
         return this.baseHttpRepository
-            .makeGetRequestWithCache<GenericMultipleApiResponseModel<ExerciseApiModel>>(endpoint,
-                GymApiConfig.httpHeaders).pipe(map(x => x.results));
+            .makeGetRequestWithCache<Array<ExerciseApiModel>>(endpoint,
+                GymApiConfig.httpHeaders);
     }
 
     retrieveExercisesByCategoryId(id: number, page: number = 1) {
         const endpoint = `${this.BASE_API_ADDRESS}${this.BASE_QUERY_PARAMETERS}&category=${id}&page=${page}`;
         return this.baseHttpRepository
-            .makeGetRequestWithCache<GenericMultipleApiResponseModel<ExerciseApiModel>>(endpoint,
+            .makeGetRequestWithCache<Array<ExerciseApiModel>>(endpoint,
                 GymApiConfig.httpHeaders);
     }
 

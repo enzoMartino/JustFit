@@ -14,13 +14,20 @@ export class GymSheetCreatorProvider {
   constructor(
     private readonly toastProvider: ToastProvider
   ) {
-    this.gymSheet = new GymSheetModel();
-    this.gymSheet.exercisesList = new Map();
-    this.initGymSheetDaysOfWeek();
     this.onGymSheetChange = new Subject();
   }
 
+  initGymSheet(gymSheet: GymSheetModel) {
+    if (gymSheet) {
+      this.gymSheet = gymSheet;
+    } else {
+      this.initGymSheetDaysOfWeek();
+    }
+  }
+
   private initGymSheetDaysOfWeek() {
+    this.gymSheet = new GymSheetModel();
+    this.gymSheet.exercisesList = new Map();
     this.gymSheet.exercisesList.set(EnumWeekDays.Monday, new Map());
     this.gymSheet.exercisesList.set(EnumWeekDays.Tuesday, new Map());
     this.gymSheet.exercisesList.set(EnumWeekDays.Wednesday, new Map());

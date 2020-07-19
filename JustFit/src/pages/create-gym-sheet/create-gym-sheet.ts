@@ -6,6 +6,7 @@ import { AlertProvider } from '../../providers/alert/alert.provider';
 import { ClientProvider } from '../../providers/client/client.provider';
 import { LoaderProvider } from '../../providers/loader/loader.provider';
 import { ClientModel } from '../../models/client.model';
+import { GymSheetModel } from '../../models/gym.sheet.model';
 
 @IonicPage()
 @Component({
@@ -37,6 +38,7 @@ export class CreateGymSheetPage {
     private readonly loaderProvider: LoaderProvider
   ) {
     this.client = this.navParams.data.client;
+    this.retrieveClientGymsheet();
     this.initSubscriptions();
   }
 
@@ -46,17 +48,23 @@ export class CreateGymSheetPage {
 
   async onSaveGymSheetButtonClicked() {
     await this.loaderProvider.showLoader();
-    await this.clientProvider.saveClientGymSheet(this.client,
-      this.gymSheetCreatorProvider.getGymSheet());
-    await this.loaderProvider.hideLoader();
-    const buttons: AlertButton[] = [{
-      text: "OK",
-      handler: () => {
-        this.gymSheetCreatorProvider.clearGymSheet();
-        this.navCtrl.pop();
-      }
-    }];
-    this.alertProvider.presentInfoAlert("The Gym Sheet has been saved", buttons);
+    try {
+      await this.clientProvider.saveClientGymSheet(this.client,
+        this.gymSheetCreatorProvider.getGymSheet());
+      await this.loaderProvider.hideLoader();
+      const buttons: AlertButton[] = [{
+        text: "OK",
+        handler: () => {
+          this.gymSheetCreatorProvider.clearGymSheet();
+          this.navCtrl.pop();
+        }
+      }];
+      this.alertProvider.presentInfoAlert("The Gym Sheet has been saved", buttons);
+    } catch (error) {
+      this.alertProvider.presentErrorAlert(error);
+    } finally {
+      await this.loaderProvider.hideLoader();
+    }
   }
 
   isSaveGymSheetButtonDisabled() {
@@ -84,6 +92,20 @@ export class CreateGymSheetPage {
       this.gymSheetCreatorProvider.clearGymSheet();
       this.navCtrl.pop();
     }
+  }
+
+  async retrieveClientGymsheet() {
+    let gymSheet: GymSheetModel;
+    if (this.client.gymSheetId !== undefined) {
+      await this.loaderProvider.showLoader();
+      try {
+        await this.clientProvider.getClientGymSheet(this.client.gymSheetId);
+      } catch (error) {
+        this.alertProvider.presentErrorAlert(error);
+      }
+      this.loaderProvider.hideLoader();
+    }
+    this.gymSheetCreatorProvider.initGymSheet(gymSheet);
   }
 
 }

@@ -3,6 +3,7 @@
 </ion-header>
 
 <ion-content padding>
-  <clients-list (createGymSheetButtonClicked)="onCreateGymSheetButtonClicked($event)" [clientsList]="clientsList">
+  <clients-list (editGymSheetButtonClicked)="onEditGymSheetButtonClicked($event)"
+    (createGymSheetButtonClicked)="onCreateGymSheetButtonClicked($event)" [clientsList]="clientsList">
   </clients-list>
 </ion-content>
