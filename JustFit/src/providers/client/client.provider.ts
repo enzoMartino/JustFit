@@ -3,6 +3,7 @@ import { GymSheetModel } from '../../models/gym.sheet.model';
 import { GymSheetFirebaseRepository } from '../../repositories/gym.sheet/gym.sheet.firebase.repository';
 import { ClientFirebaseRepository } from '../../repositories/client/client.firebase.repository';
 import { ClientModel } from '../../models/client.model';
+import { ExerciseFirebaseModel } from '../../models/exercise.firebase.model';
 
 @Injectable()
 export class ClientProvider {
@@ -18,9 +19,21 @@ export class ClientProvider {
     await this.clientFirebaseRepository.saveClienInfos(client);
   }
 
-  async getClientGymSheet(gymSheetId: string) {
-    const gymSheet = await this.gymSheetFirebaseRepository.getGymSheetById(gymSheetId);
-    console.log(gymSheet);
+  async getClientGymSheet(gymSheetId: string): Promise<GymSheetModel> {
+    const gymSheetFirebase = await this.gymSheetFirebaseRepository.getGymSheetById(gymSheetId);
+    const gymSheetArrays: Array<Array<string>> = JSON.parse(gymSheetFirebase.map);
+    const gymSheet: GymSheetModel = new GymSheetModel();
+    gymSheet.exercisesList = new Map<string, Map<number, ExerciseFirebaseModel>>();
+    gymSheetArrays.forEach(x => {
+      const internalMap: Map<number, ExerciseFirebaseModel> =
+        new Map<number, ExerciseFirebaseModel>();
+      const exercise: Array<any> = JSON.parse(x[1]);
+      exercise.forEach(y => {
+        internalMap.set(y[0], y[1]);
+      });
+      gymSheet.exercisesList.set(x[0], internalMap);
+    });
+    return gymSheet;
   }
 
 }

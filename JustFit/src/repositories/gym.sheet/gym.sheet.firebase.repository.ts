@@ -5,6 +5,7 @@ import { Injectable } from "@angular/core";
 import { BaseFirebaseRepository } from "../base.firebase.repository";
 import { GymSheetModel } from "../../models/gym.sheet.model";
 import { EnumErrors } from "../../models/enum.errors";
+import { GymSheetFirebaseModel } from "../../models/gym.sheet.firebase.model";
 
 @Injectable()
 export class GymSheetFirebaseRepository implements IGymSheetRepository {
@@ -38,10 +39,10 @@ export class GymSheetFirebaseRepository implements IGymSheetRepository {
         let mapToSave: Map<string, string> = new Map();
         gymSheet.exercisesList
             .forEach((x, k) => mapToSave.set(k, JSON.stringify(Array.from(x.entries()))));
-        const stringedGymSheet: { id: string, map: string } =
+        const stringedGymSheet: GymSheetFirebaseModel =
             { id: null, map: JSON.stringify(Array.from(mapToSave.entries())) };
         return this.baseFirebaseRepository
-            .saveDocument<{ id: string, map: string }>(stringedGymSheet,
+            .saveDocument<GymSheetFirebaseModel>(stringedGymSheet,
                 this.collectionReference);
     }
 
@@ -61,8 +62,8 @@ export class GymSheetFirebaseRepository implements IGymSheetRepository {
         }
     }
 
-    private handleRetrieveUserByIdResult(result: firebase.firestore.DocumentSnapshot): GymSheetModel {
-        const gymSheet = result.data() as GymSheetModel;
+    private handleRetrieveUserByIdResult(result: firebase.firestore.DocumentSnapshot): GymSheetFirebaseModel {
+        const gymSheet = result.data() as GymSheetFirebaseModel;
         gymSheet.id = result.id;
         return gymSheet;
     }

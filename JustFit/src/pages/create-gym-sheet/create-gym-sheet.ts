@@ -99,7 +99,7 @@ export class CreateGymSheetPage {
     if (this.client.gymSheetId !== undefined) {
       await this.loaderProvider.showLoader();
       try {
-        await this.clientProvider.getClientGymSheet(this.client.gymSheetId);
+        gymSheet = await this.clientProvider.getClientGymSheet(this.client.gymSheetId);
       } catch (error) {
         this.alertProvider.presentErrorAlert(error);
       }

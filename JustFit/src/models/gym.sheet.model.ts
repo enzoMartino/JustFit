@@ -1,6 +1,5 @@
-import { BaseFirebaseCollectionModel } from "./base.firebase.collection.model";
 import { ExerciseFirebaseModel } from "./exercise.firebase.model";
 
-export class GymSheetModel extends BaseFirebaseCollectionModel {
+export class GymSheetModel {
     exercisesList: Map<string, Map<number, ExerciseFirebaseModel>>;
 }
