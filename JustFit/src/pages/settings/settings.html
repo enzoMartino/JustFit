@@ -1,0 +1,7 @@
+<ion-header no-border>
+  <common-navbar [hasLogoutButton]="true"></common-navbar>
+</ion-header>
+
+<ion-content padding>
+  <settings-list (settingButtonClicked)="onSettingButtonClicked($event)" [settingsList]="settingsList"></settings-list>
+</ion-content>

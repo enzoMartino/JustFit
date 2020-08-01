@@ -18,6 +18,8 @@ import { ExerciseEquipmentsListItemComponent } from './exercise-equipments-list-
 import { ExerciseMusclesListItemComponent } from './exercise-muscles-list-item/exercise-muscles-list-item';
 import { DaysOfWeekListComponent } from './days-of-week-list/days-of-week-list';
 import { DaysOfWeekListItemComponent } from './days-of-week-list-item/days-of-week-list-item';
+import { SettingsListComponent } from './settings-list/settings-list';
+import { SettingsListItemComponent } from './settings-list-item/settings-list-item';
 
 @NgModule({
 	declarations: [
@@ -37,7 +39,9 @@ import { DaysOfWeekListItemComponent } from './days-of-week-list-item/days-of-we
 		ExerciseEquipmentsListItemComponent,
 		ExerciseMusclesListItemComponent,
 		DaysOfWeekListComponent,
-		DaysOfWeekListItemComponent
+		DaysOfWeekListItemComponent,
+    SettingsListComponent,
+    SettingsListItemComponent
 	],
 	imports: [
 		CommonModule,
@@ -60,7 +64,9 @@ import { DaysOfWeekListItemComponent } from './days-of-week-list-item/days-of-we
 		ExerciseEquipmentsListItemComponent,
 		ExerciseMusclesListItemComponent,
 		DaysOfWeekListComponent,
-		DaysOfWeekListItemComponent 
+		DaysOfWeekListItemComponent,
+    SettingsListComponent,
+    SettingsListItemComponent 
 	]
 })
 export class ComponentsModule { }

@@ -2,6 +2,7 @@ import { Component, Input, Output, EventEmitter, ViewChild, AfterViewInit } from
 import { AuthProvider } from '../../providers/auth-provider/auth.provider';
 import { LoaderProvider } from '../../providers/loader/loader.provider';
 import { Navbar, NavController } from 'ionic-angular';
+import { EnumNavigationMain } from '../../models/enum.navigation.main';
 
 @Component({
   selector: 'common-navbar',
@@ -18,14 +19,16 @@ export class CommonNavbarComponent implements AfterViewInit {
 
   @Output() closeButtonClicked: EventEmitter<void>;
   @Output() backButtonClicked: EventEmitter<void>;
+  @Output() settingsButtonClicked: EventEmitter<void>;
 
   constructor(
     private readonly authProvider: AuthProvider,
     private readonly loaderProvider: LoaderProvider,
     public navCtrl: NavController
   ) {
-    this.closeButtonClicked = new EventEmitter;
-    this.backButtonClicked = new EventEmitter;
+    this.closeButtonClicked = new EventEmitter();
+    this.backButtonClicked = new EventEmitter();
+    this.settingsButtonClicked = new EventEmitter();
   }
 
   ngAfterViewInit(): void {
@@ -50,6 +53,14 @@ export class CommonNavbarComponent implements AfterViewInit {
         this.navCtrl.pop();
       }
     };
+  }
+
+  onSettingsClicked() {
+    if (this.settingsButtonClicked.observers.length > 0) {
+      this.settingsButtonClicked.emit();
+    } else {
+      this.navCtrl.push(EnumNavigationMain.SettingsPage);
+    }
   }
 
 }

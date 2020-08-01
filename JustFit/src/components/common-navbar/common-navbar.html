@@ -6,7 +6,7 @@
     </button>
   </ion-buttons>
   <ion-buttons end>
-    <button *ngIf="hasSettingsButton" class="padding-right-m" ion-button icon-only (click)="onLogoutClicked($event)">
+    <button *ngIf="hasSettingsButton" class="padding-right-m" ion-button icon-only (click)="onSettingsClicked($event)">
       <ion-icon color="primary" class="bold" name="settings"></ion-icon>
     </button>
     <button *ngIf="hasLogoutButton" ion-button icon-only (click)="onLogoutClicked($event)">

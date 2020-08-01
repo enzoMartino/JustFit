@@ -11,6 +11,7 @@ import { GymSheetCreatorProvider } from "./gym-sheet-creator/gym-sheet-creator.p
 import { ToastProvider } from "./toast/toast.provider";
 import { ModalProvider } from "./modal/modal.provider";
 import { ClientProvider } from "./client/client.provider";
+import { SettingsProvider } from "./settings/settings.provider";
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { ClientProvider } from "./client/client.provider";
     GymSheetCreatorProvider,
     ToastProvider,
     ModalProvider,
-    ClientProvider
+    ClientProvider,
+    SettingsProvider
   ],
   exports: [
   ]
