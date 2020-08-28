@@ -3,6 +3,7 @@ import { BaseHttpRepository } from "../base.http.repository";
 import { CategoryApiModel } from "../../models/category.api.model";
 import { ICategoryRepository } from "./category.interface.repository";
 import { GymApiConfig } from "../../models/gym.api.config";
+import { GenericMultipleApiResponseModel } from "../../models/generic.multiple.api.response.model";
 
 @Injectable()
 export class CategoryHttpRepository implements ICategoryRepository {
@@ -15,7 +16,7 @@ export class CategoryHttpRepository implements ICategoryRepository {
 
     retrieveExercisesCategories() {
         return this.baseHttpRepository
-            .makeGetRequestWithCache<Array<CategoryApiModel>>(this.BASE_API_ADDRESS,
+            .makeGetRequestWithCache<GenericMultipleApiResponseModel<CategoryApiModel>>(this.BASE_API_ADDRESS,
                 GymApiConfig.httpHeaders);
     }
 

@@ -3,6 +3,7 @@ import { BaseHttpRepository } from "../base.http.repository";
 import { GymApiConfig } from "../../models/gym.api.config";
 import { IExerciseCommentRepository } from "./exercise.comment.interface.repository";
 import { ExerciseCommentApiModel } from "../../models/exercise.comment.api.model";
+import { GenericMultipleApiResponseModel } from "../../models/generic.multiple.api.response.model";
 
 @Injectable()
 export class ExerciseCommentHttpRepository implements IExerciseCommentRepository {
@@ -16,7 +17,7 @@ export class ExerciseCommentHttpRepository implements IExerciseCommentRepository
     retrieveExerciseCommentByExerciseId(id: number) {
         const endpoint = `${this.API_ADDRESS}&exercise=${id}`;
         return this.baseHttpRepository
-            .makeGetRequestWithCache<Array<ExerciseCommentApiModel>>(endpoint,
+            .makeGetRequestWithCache<GenericMultipleApiResponseModel<ExerciseCommentApiModel>>(endpoint,
                 GymApiConfig.httpHeaders);
     }
 

@@ -41,6 +41,7 @@ export class GymSheetFirebaseRepository implements IGymSheetRepository {
             .forEach((x, k) => mapToSave.set(k, JSON.stringify(Array.from(x.entries()))));
         const stringedGymSheet: GymSheetFirebaseModel =
             { id: null, map: JSON.stringify(Array.from(mapToSave.entries())) };
+        stringedGymSheet.id = gymSheet.id;
         return this.baseFirebaseRepository
             .saveDocument<GymSheetFirebaseModel>(stringedGymSheet,
                 this.collectionReference);

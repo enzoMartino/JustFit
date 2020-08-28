@@ -49,8 +49,8 @@ export class CategoryProvider {
     // }));
     const exercisesCategories = await this.categoryHttpRepository
       .retrieveExercisesCategories().toPromise();
-    exercisesCategories.forEach(x => { x.image = this.categoriesImagesMap[x.id]; });
-    return exercisesCategories;
+    exercisesCategories.results.forEach(x => { x.image = this.categoriesImagesMap[x.id]; });
+    return exercisesCategories.results;
   }
 
 }

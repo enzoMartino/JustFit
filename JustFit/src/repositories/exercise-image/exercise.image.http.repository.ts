@@ -3,6 +3,7 @@ import { BaseHttpRepository } from "../base.http.repository";
 import { GymApiConfig } from "../../models/gym.api.config";
 import { IExerciseImageRepository } from "./exercise.image.interface.repository";
 import { ExerciseImageApiModel } from "../../models/exercise.image.api.model";
+import { GenericMultipleApiResponseModel } from "../../models/generic.multiple.api.response.model";
 
 @Injectable()
 export class ExerciseImageHttpRepository implements IExerciseImageRepository {
@@ -16,7 +17,7 @@ export class ExerciseImageHttpRepository implements IExerciseImageRepository {
     retrieveExerciseImageByExerciseId(id: number) {
         const endpoint = `${this.API_ADDRESS}&exercise=${id}`;
         return this.baseHttpRepository
-            .makeGetRequestWithCache<Array<ExerciseImageApiModel>>(endpoint,
+            .makeGetRequestWithCache<GenericMultipleApiResponseModel<ExerciseImageApiModel>>(endpoint,
                 GymApiConfig.httpHeaders);
     }
 

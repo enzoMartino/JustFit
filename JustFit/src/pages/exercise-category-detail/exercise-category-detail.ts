@@ -43,7 +43,7 @@ export class ExerciseCategoryDetailPage {
     try {
       const response = await this.exerciseProvider
         .retrieveExercisesByCategoryIdWithImages(this.exerciseCategory.id, ++this.page);
-      this.exercisesList.push(...response);
+      this.exercisesList.push(...response.results);
     } catch (error) {
       this.alertProvider.presentErrorAlert(error);
     }

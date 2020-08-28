@@ -31,11 +31,11 @@ export class ExerciseProvider {
       .retrieveExercisesByCategoryId(id, page)
       .pipe(
         map(x => {
-          x.forEach(y => y.description = y.description.replace(/<\/?[^>]+(>|$)/g, ""));
+          x.results.forEach(y => y.description = y.description.replace(/<\/?[^>]+(>|$)/g, ""));
           return x;
         })
       ).toPromise();
-    await this.retrieveExercisesImages(exercisesResponse);
+    await this.retrieveExercisesImages(exercisesResponse.results);
     return exercisesResponse;
   }
 
@@ -43,10 +43,10 @@ export class ExerciseProvider {
     const response = await this.exerciseCommentHttpRepository
       .retrieveExerciseCommentByExerciseId(id)
       .pipe(
-        first(comments => comments.length > 0),
+        first(comments => comments.count > 0),
         catchError(error => of(undefined)),
         map(comments => comments ?
-          comments[0] :
+          comments.results[0] :
           new ExerciseCommentApiModel("There is no comment for this exercise"))
       )
       .toPromise();
@@ -87,10 +87,10 @@ export class ExerciseProvider {
       const image = await this.exerciseImageHttpRepository
         .retrieveExerciseImageByExerciseId(exercise.id)
         .pipe(
-          first(images => images.length > 0),
+          first(images => images.count > 0),
           catchError(error => of(undefined)),
           map(images => images ?
-            images[0] :
+            images.results[0] :
             new ExerciseImageApiModel("assets/imgs/exercises/exercise-placeholder.png"))
         ).toPromise();
       exercises[index].image = image.image;

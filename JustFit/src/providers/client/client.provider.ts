@@ -23,6 +23,7 @@ export class ClientProvider {
     const gymSheetFirebase = await this.gymSheetFirebaseRepository.getGymSheetById(gymSheetId);
     const gymSheetArrays: Array<Array<string>> = JSON.parse(gymSheetFirebase.map);
     const gymSheet: GymSheetModel = new GymSheetModel();
+    gymSheet.id = gymSheetFirebase.id;
     gymSheet.exercisesList = new Map<string, Map<number, ExerciseFirebaseModel>>();
     gymSheetArrays.forEach(x => {
       const internalMap: Map<number, ExerciseFirebaseModel> =
