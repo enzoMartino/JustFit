@@ -2,7 +2,7 @@
   <ion-item class="input-item">
     <ion-avatar item-start>
       <img class="client_photo" *ngIf="client?.picture" src="{{client?.picture}}" alt="">
-      <ion-icon *ngIf="!(client?.picture)" name="contact"></ion-icon>
+      <ion-icon class="standard-picture" *ngIf="!(client?.picture)" name="contact"></ion-icon>
     </ion-avatar>
     <ion-row>
       <ion-col col-11>
