@@ -23,4 +23,11 @@ export class SessionProvider {
     this.sessionCycleVariables.loggedPersosnalTrainer = val;
   }
 
+  get firebaseUser(): firebase.User {
+    return this.sessionCycleVariables.firebaseUser;
+  }
+  set firebaseUser(val: firebase.User) {
+    this.sessionCycleVariables.firebaseUser = val;
+  }
+
 }

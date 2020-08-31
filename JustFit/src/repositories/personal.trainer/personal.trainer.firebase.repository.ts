@@ -35,6 +35,18 @@ export class PersonalTrainerFirebaseRepository implements IPersonalTrainerReposi
     this.collectionName = EnumDbCollectionNames.PERSONAL_TRAINERS;
   }
 
+  async deletePersonalTrainerById(id: string): Promise<boolean> {
+    try {
+      const result = await this.collectionReference.where("id", "==", id).get();
+      for (let i = 0; i < result.docs.length; i++) {
+        await result.docs[i].ref.delete();
+      }
+    } catch (error) {
+      throw error;
+    }
+    return true
+  }
+
   async addPersonalTrainer(personalTrainer: PersonalTrainerModel): Promise<firebase.firestore.DocumentReference> {
     return this.baseFirebaseRepository.saveDocument<PersonalTrainerModel>(personalTrainer,
       this.collectionReference);

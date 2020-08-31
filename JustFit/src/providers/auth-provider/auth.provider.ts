@@ -52,9 +52,11 @@ export class AuthProvider {
   }
 
   private async handleNewUser(result: firebase.auth.UserCredential) {
+    this.sessionProvider.firebaseUser = result.user;
     if (result.additionalUserInfo.isNewUser) {
       let personalTrainer = new PersonalTrainerModel(result.user.uid, result.user.email,
         EnumPersonTypes.PERSONAL_TRAINER);
+      this.sessionProvider.loggedPersonaltrainer = personalTrainer;
       this.personalTrainerFirebaseRepository.addPersonalTrainer(personalTrainer)
         .then(() => this.sessionProvider.loggedPersonaltrainer = personalTrainer)
         .catch(error => { throw error; });
@@ -62,6 +64,7 @@ export class AuthProvider {
   }
 
   private async handleNewGoogleUser(result: firebase.auth.UserCredential) {
+    this.sessionProvider.firebaseUser = result.user;
     if (result.additionalUserInfo.isNewUser) {
       let personalTrainer = new PersonalTrainerModel(result.user.uid, result.user.email,
         EnumPersonTypes.PERSONAL_TRAINER);
@@ -69,6 +72,7 @@ export class AuthProvider {
       personalTrainer.name = googleUser.given_name;
       personalTrainer.surname = googleUser.family_name;
       personalTrainer.picture = googleUser.picture;
+      this.sessionProvider.loggedPersonaltrainer = personalTrainer;
       this.personalTrainerFirebaseRepository.addPersonalTrainer(personalTrainer)
         .then(() => this.sessionProvider.loggedPersonaltrainer = personalTrainer)
         .catch(error => { throw error; });

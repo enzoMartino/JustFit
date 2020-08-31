@@ -34,6 +34,7 @@ export class MyApp {
         this.AuthProvider.afAuth.authState.subscribe(async (user) => {
           try {
             if (user) {
+              this.sessionProvider.firebaseUser = user;
               await this.handleExistingUser(user.uid);
               this.rootPage = EnumNavigationMain.TabsPage;
             } else {
@@ -56,8 +57,10 @@ export class MyApp {
   }
 
   private async handleExistingUser(userId: string) {
-    const personalTrainer = await this.personalTrainerFirebaseRepository
-      .retrievePersonalTrainerById(userId);
-    this.sessionProvider.loggedPersonaltrainer = personalTrainer;
+    if (this.sessionProvider.loggedPersonaltrainer === undefined) {
+      const personalTrainer = await this.personalTrainerFirebaseRepository
+        .retrievePersonalTrainerById(userId);
+      this.sessionProvider.loggedPersonaltrainer = personalTrainer;
+    }
   }
 }

@@ -32,6 +32,18 @@ export class ReviewFirebaseRepository implements IReviewRepository {
         this.collectionName = EnumDbCollectionNames.REVIEWS;
     }
 
+    async deleteReviewsByPersonalTrainerById(id: string): Promise<boolean> {
+        try {
+            const result = await this.collectionReference.where("reviewee", "==", id).get();
+            for (let i = 0; i < result.docs.length; i++) {
+                await result.docs[i].ref.delete();
+            }
+        } catch (error) {
+            throw error;
+        }
+        return true
+    }
+
     async getReviewsByUserId(id: string): Promise<ReviewModel[]> {
         let reviews: ReviewModel[] = [];
         let querySnapshot = await this.collectionReference.where("reviewee", "==", id).get();
