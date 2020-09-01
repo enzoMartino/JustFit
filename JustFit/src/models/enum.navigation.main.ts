@@ -10,5 +10,6 @@ export enum EnumNavigationMain {
     ExerciseDetailPage = "ExerciseDetailPage",
     ExercisesCategoriesPage = "ExercisesCategoriesPage",
     DayOfWeekDetailPage = "DayOfWeekDetailPage",
-    SettingsPage = "SettingsPage"
+    SettingsPage = "SettingsPage",
+    ChangeProfileDataPage = "ChangeProfileDataPage"
 }

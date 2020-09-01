@@ -9,6 +9,7 @@ import { SessionProvider } from '../../providers/session/session.provider';
 import { AuthProvider } from '../../providers/auth-provider/auth.provider';
 import { PersonalTrainerFirebaseRepository } from '../../repositories/personal.trainer/personal.trainer.firebase.repository';
 import { ReviewFirebaseRepository } from '../../repositories/review/review.firebase.repository';
+import { EnumNavigationMain } from '../../models/enum.navigation.main';
 
 @IonicPage()
 @Component({
@@ -37,6 +38,7 @@ export class SettingsPage {
   async onSettingButtonClicked(setting: SettingButtonModel) {
     switch (setting.id) {
       case SettingsButtonsEnum.CHANGE_YOUR_PROFILE_DATA_BUTTON:
+        this.navCtrl.push(EnumNavigationMain.ChangeProfileDataPage);
         break;
       case SettingsButtonsEnum.DELETE_YOUR_ACCOUNT_BUTTON:
         await this.handleDeleteAccount();

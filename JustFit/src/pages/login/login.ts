@@ -28,7 +28,7 @@ export class LoginPage {
   }
 
   initializeLoginPage() {
-    this.loginForm = this.formsValidatorProvider.retrieveEmailAndPasswordFormValidator();
+    this.loginForm = this.formsValidatorProvider.retrieveSignUpFormValidator();
   }
 
   login() {

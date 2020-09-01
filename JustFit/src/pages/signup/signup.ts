@@ -18,14 +18,14 @@ export class SignupPage {
 
   constructor(
     private readonly navCtrl: NavController,
-    private readonly AuthProvider: AuthProvider,
-    private readonly FormsValidatorProvider: FormsValidatorProvider
+    private readonly authProvider: AuthProvider,
+    private readonly formsValidatorProvider: FormsValidatorProvider
   ) {
-    this.initializeSignUpPage();
+    this.initializeFormValidators();
   }
 
-  initializeSignUpPage() {
-    this.signUpForm = this.FormsValidatorProvider.retrieveEmailAndPasswordFormValidator();
+  initializeFormValidators() {
+    this.signUpForm = this.formsValidatorProvider.retrieveSignUpFormValidator();
   }
 
   signup() {
@@ -34,9 +34,10 @@ export class SignupPage {
       email: data.email,
       password: data.password
     };
-    this.AuthProvider.signUp(credentials).then(
+    this.authProvider.signUp(credentials).then(
       () => this.navCtrl.setRoot(EnumNavigationMain.TabsPage),
       error => this.signupError = error.message
     );
   }
+  
 }
