@@ -89,7 +89,6 @@ export class CreateGymSheetPage {
       this.alertProvider.presentWarningAlert("If you exit from this page all the unsaved changes will be lost. Do you want to exit anyway?",
         buttons);
     } else {
-      this.gymSheetCreatorProvider.clearGymSheet();
       this.navCtrl.pop();
     }
   }

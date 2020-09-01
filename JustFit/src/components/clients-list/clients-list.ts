@@ -12,10 +12,12 @@ export class ClientsListComponent {
 
   @Output() createGymSheetButtonClicked: EventEmitter<ClientModel>;
   @Output() editGymSheetButtonClicked: EventEmitter<ClientModel>;
+  @Output() contactButtonClicked: EventEmitter<ClientModel>;
 
   constructor() {
     this.createGymSheetButtonClicked = new EventEmitter();
     this.editGymSheetButtonClicked = new EventEmitter();
+    this.contactButtonClicked = new EventEmitter();
   }
 
   onCreateGymSheetButtonClicked(client: ClientModel) {
@@ -24,6 +26,10 @@ export class ClientsListComponent {
 
   onEditGymSheetButtonClicked(client: ClientModel) {
     this.editGymSheetButtonClicked.emit(client);
+  }
+
+  onContactButtonClicked(client: ClientModel) {
+    this.contactButtonClicked.emit(client);
   }
 
 }
