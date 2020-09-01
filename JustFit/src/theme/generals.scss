@@ -62,6 +62,9 @@
 .margin-bottom-l {
     margin-bottom: calculateVw(30px);
 }
+.margin-bottom-xl {
+    margin-bottom: calculateVw(50px);
+}
 .no-margin {
     margin: 0;
 }
@@ -74,6 +77,9 @@
 .margin-top-l {
     margin-top: calculateVw(15px);
 }
+.margin-top-xl {
+    margin-top: calculateVw(50px);
+}
 .text-align-center {
     text-align: center;
 }
@@ -82,4 +88,7 @@
 }
 .red-color {
     color: red !important;
+}
+.width-100 {
+    width: 100%;
 }

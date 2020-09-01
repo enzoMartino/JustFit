@@ -18,5 +18,11 @@
 </ion-header>
 
 <ion-content padding #profileContent no-bounce>
+  <ion-row>
+    <h2>Reviews</h2>
+  </ion-row>
   <reviews-list [reviewsList]="reviewsList"></reviews-list>
+  <ion-row *ngIf="reviewsList.length == 0">
+    <ion-col class="padding-left-0 font-size-m bold">There are no reviews for you yet.</ion-col>
+  </ion-row>
 </ion-content>

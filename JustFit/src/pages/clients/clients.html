@@ -1,9 +1,0 @@
-<ion-header no-border>
-  <common-navbar [hasLogoutButton]="true" [hasSettingsButton]="true"></common-navbar>
-</ion-header>
-
-<ion-content padding>
-  <clients-list (editGymSheetButtonClicked)="onEditGymSheetButtonClicked($event)"
-    (createGymSheetButtonClicked)="onCreateGymSheetButtonClicked($event)" [clientsList]="clientsList">
-  </clients-list>
-</ion-content>
