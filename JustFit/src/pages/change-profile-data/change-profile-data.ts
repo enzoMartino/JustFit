@@ -4,7 +4,6 @@ import { SessionProvider } from '../../providers/session/session.provider';
 import { PersonalTrainerModel } from '../../models/personal.trainer.model';
 import { FormsValidatorProvider } from '../../providers/forms-validator/forms-validator.provider';
 import { FormGroup } from '@angular/forms';
-import { ProvidersIdsEnum } from '../../models/enum.providers.ids';
 import { AlertProvider } from '../../providers/alert/alert.provider';
 
 @IonicPage()
